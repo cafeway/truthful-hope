@@ -1,16 +1,10 @@
 <template>
-  <div
-    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
-  >
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full max-w-full flex-grow flex-1">
-          <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
-            Performance
-          </h6>
-          <h2 class="text-blueGray-700 text-xl font-semibold">
-            Total orders
-          </h2>
+          <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">Performance</h6>
+          <h2 class="text-blueGray-700 text-xl font-semibold">Total orders</h2>
         </div>
       </div>
     </div>
@@ -23,21 +17,14 @@
 </template>
 <script>
 import Chart from "chart.js";
+
 export default {
-  mounted: function () {
-    this.$nextTick(function () {
-      let config = {
+  mounted() {
+    this.$nextTick(() => {
+      const config = {
         type: "bar",
         data: {
-          labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-          ],
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
           datasets: [
             {
               label: new Date().getFullYear(),
@@ -118,7 +105,7 @@ export default {
           },
         },
       };
-      let ctx = document.getElementById("bar-chart").getContext("2d");
+      const ctx = document.getElementById("bar-chart").getContext("2d");
       window.myBar = new Chart(ctx, config);
     });
   },

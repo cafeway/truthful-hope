@@ -1,19 +1,8 @@
 import { createApp } from "vue";
-import firebase from 'firebase'
-var firebaseConfig = {
-  apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
-  authDomain: "wise-fex.firebaseapp.com",
-  projectId: "wise-fex",
-  storageBucket: "wise-fex.appspot.com",
-  messagingSenderId: "1027087323521",
-  appId: "1:1027087323521:web:2b1a4a769248bd0b649880",
-  measurementId: "G-E1E70NVLPY"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+import firebase from "firebase";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import { createWebHistory, createRouter } from "vue-router";
-
 // styles
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -44,6 +33,19 @@ import Register from "@/views/auth/Register.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
+  authDomain: "wise-fex.firebaseapp.com",
+  projectId: "wise-fex",
+  storageBucket: "wise-fex.appspot.com",
+  messagingSenderId: "1027087323521",
+  appId: "1:1027087323521:web:2b1a4a769248bd0b649880",
+  measurementId: "G-E1E70NVLPY",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 // import Index from "@/views/Index.vue";
 
 // routes
@@ -107,4 +109,4 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(router).use(VueSweetalert2).mount("#app");

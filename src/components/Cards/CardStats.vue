@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
-  >
+  <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
     <div class="flex-auto p-4">
       <div class="flex flex-wrap">
         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -9,12 +7,23 @@
             {{ statSubtitle }}
           </h5>
           <span class="font-semibold text-xl text-blueGray-700">
-            {{ statTitle }}
+            {{ this.username }}
           </span>
         </div>
         <div class="relative w-auto pl-4 flex-initial">
           <div
-            class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full"
+            class="
+              text-white
+              p-3
+              text-center
+              inline-flex
+              items-center
+              justify-center
+              w-12
+              h-12
+              shadow-lg
+              rounded-full
+            "
             :class="[statIconColor]"
           >
             <i :class="[statIconName]"></i>
@@ -23,11 +32,7 @@
       </div>
       <p class="text-sm text-blueGray-400 mt-4">
         <span class="mr-2" :class="[statPercentColor]">
-          <i
-            :class="[
-              statArrow === 'up' ? `fas fa-arrow-up` : `fas fa-arrow-down`,
-            ]"
-          ></i>
+          <i :class="[statArrow === 'up' ? `fas fa-arrow-up` : `fas fa-arrow-down`]"></i>
           {{ statPercent }}%
         </span>
         <span class="whitespace-nowrap">{{ statDescripiron }}</span>
@@ -36,20 +41,50 @@
   </div>
 </template>
 <script>
+import firebase from "firebase";
 export default {
   name: "card-stats",
+  data() {
+    return {
+      username: "",
+      phonenumber: "",
+      activated: false,
+      balance: 0,
+      plan: "",
+      uid: "",
+      downlines: 0,
+      cashout: 0,
+    };
+  },
+  mounted: function () {
+    firebase.auth().onAuthStateChanged((user) => {
+      var user_mail = user.email;
+      const db = firebase.firestore();
+      db.collection("users")
+        .doc(user_mail)
+        .get()
+        .then((snapshot) => {
+          var data = snapshot.data();
+          this.username = data.username;
+          this.balance = data.balance;
+          this.activated = data.activated;
+          this.downlines = data.downlines;
+          this.plan = data.plan;
+        });
+    });
+  },
   props: {
     statSubtitle: {
       type: String,
       default: "Traffic",
     },
     statTitle: {
-      type: String,
-      default: "350,897",
+      type: Number,
+      default: 6,
     },
     statArrow: {
       default: "up",
-      validator: function (value) {
+      validator(value) {
         // The value must match one of these strings
         return ["up", "down"].indexOf(value) !== -1;
       },

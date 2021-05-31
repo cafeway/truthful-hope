@@ -1,10 +1,7 @@
 {
   "name": "vue-notus",
-  "homepage": "https://demos.creative-tim.com/vue-notus/",
   "version": "1.1.0",
   "description": "Vue Notus - A free Tailwind CSS and VueJS UI Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/vue-notus",
-  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && gulp licenses",
@@ -17,6 +14,7 @@
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
     "@vue/compiler-sfc": "3.0.7",
+    "bootstrap-icons": "^1.5.0",
     "chart.js": "2.9.4",
     "core-js": "3.9.1",
     "firebase": "^8.6.3",
@@ -25,18 +23,24 @@
     "gulp-append-prepend": "1.0.8",
     "tailwindcss": "2.0.4",
     "vue": "3.0.7",
-    "vue-router": "4.0.5"
+    "vue-router": "4.0.5",
+    "vue-sweetalert2": "^4.3.1",
+    "vuesax": "^3.12.2"
   },
   "devDependencies": {
     "@babel/core": "7.13.10",
     "@babel/eslint-parser": "7.13.10",
     "@vue/cli-plugin-babel": "5.0.0-alpha.7",
-    "@vue/cli-plugin-eslint": "5.0.0-alpha.7",
+    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "5.0.0-alpha.7",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "autoprefixer": "10.2.5",
+    "babel-eslint": "^10.1.0",
     "eslint": "7.22.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "7.7.0",
     "postcss": "8.2.8",
+    "prettier": "^2.2.1",
     "vue-template-compiler": "2.6.12"
   },
   "eslintConfig": {
@@ -46,11 +50,13 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:vue/vue3-essential",
+      "@vue/prettier"
     ],
     "rules": {},
     "parserOptions": {
-      "parser": "@babel/eslint-parser"
+      "parser": "babel-eslint"
     }
   },
   "postcss": {
@@ -61,5 +67,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "homepage": "https://demos.creative-tim.com/vue-notus/",
+  "license": "MIT",
+  "repository": "https://github.com/creativetimofficial/vue-notus"
 }

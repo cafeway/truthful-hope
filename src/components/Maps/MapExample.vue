@@ -9,10 +9,10 @@
 <script>
 export default {
   mounted() {
-    let google = window.google;
+    const { google } = window;
     let map = document.getElementById("map-canvas");
-    let lat = map.getAttribute("data-lat");
-    let lng = map.getAttribute("data-lng");
+    const lat = map.getAttribute("data-lat");
+    const lng = map.getAttribute("data-lng");
 
     const myLatlng = new google.maps.LatLng(lat, lng);
     const mapOptions = {
@@ -68,7 +68,7 @@ export default {
 
     const marker = new google.maps.Marker({
       position: myLatlng,
-      map: map,
+      map,
       animation: google.maps.Animation.DROP,
       title: "Hello World!",
     });
@@ -81,7 +81,7 @@ export default {
       content: contentString,
     });
 
-    google.maps.event.addListener(marker, "click", function () {
+    google.maps.event.addListener(marker, "click", () => {
       infowindow.open(map, marker);
     });
   },
