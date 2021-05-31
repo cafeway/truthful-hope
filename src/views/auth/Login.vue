@@ -45,6 +45,7 @@
                   type="email"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
+                  v-model="form.email"
                 />
               </div>
 
@@ -59,6 +60,7 @@
                   type="password"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
+                  v-model="form.password"
                 />
               </div>
               <div>
@@ -78,6 +80,7 @@
                 <button
                   class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="button"
+                  @click="login()"
                 >
                   Sign In
                 </button>
@@ -104,13 +107,31 @@
 <script>
 import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
-
+import firebase from 'firebase'
 export default {
   data() {
     return {
       github,
       google,
+      form: {
+        email: '',
+        pasword: ''
+      }
     };
+  },
+  methods: {
+      login: function () {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .then(data => {
+          alert('success')
+          console.log(data)
+        })
+        .catch(err => {
+          alert(err.message)
+        })
+    }
   },
 };
 </script>

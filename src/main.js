@@ -1,4 +1,17 @@
 import { createApp } from "vue";
+import firebase from 'firebase'
+var firebaseConfig = {
+  apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
+  authDomain: "wise-fex.firebaseapp.com",
+  projectId: "wise-fex",
+  storageBucket: "wise-fex.appspot.com",
+  messagingSenderId: "1027087323521",
+  appId: "1:1027087323521:web:2b1a4a769248bd0b649880",
+  measurementId: "G-E1E70NVLPY"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 import { createWebHistory, createRouter } from "vue-router";
 
 // styles
@@ -31,7 +44,7 @@ import Register from "@/views/auth/Register.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
-import Index from "@/views/Index.vue";
+// import Index from "@/views/Index.vue";
 
 // routes
 
@@ -74,17 +87,17 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/landing",
-    component: Landing,
-  },
+  // {
+  //   path: "/landing",
+  //   component: Landing,
+  // },
   {
     path: "/profile",
     component: Profile,
   },
   {
     path: "/",
-    component: Index,
+    component: Landing,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
