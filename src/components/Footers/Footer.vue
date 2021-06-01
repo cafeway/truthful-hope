@@ -134,7 +134,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://www.creative-tim.com/presentation?ref=vn-footer"
                   >
                     About Us
                   </a>
@@ -149,7 +148,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://blog.creative-tim.com?ref=vn-footer"
                   >
                     Blog
                   </a>
@@ -164,7 +162,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://www.github.com/creativetimofficial?ref=vn-footer"
                   >
                     Github
                   </a>
@@ -179,7 +176,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://www.creative-tim.com/bootstrap-themes/free?ref=vn-footer"
                   >
                     Free Products
                   </a>
@@ -201,7 +197,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://github.com/creativetimofficial/vue-notus/blob/main/LICENSE.md?ref=vn-footer"
                   >
                     MIT License
                   </a>
@@ -216,7 +211,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://creative-tim.com/terms?ref=vn-footer"
                   >
                     Terms & Conditions
                   </a>
@@ -231,7 +225,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://creative-tim.com/privacy?ref=vn-footer"
                   >
                     Privacy Policy
                   </a>
@@ -246,7 +239,6 @@
                       pb-2
                       text-sm
                     "
-                    href="https://creative-tim.com/contact-us?ref=vn-footer"
                   >
                     Contact Us
                   </a>
@@ -260,13 +252,8 @@
       <div class="flex flex-wrap items-center md:justify-between justify-center">
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
           <div class="text-sm text-blueGray-500 font-semibold py-1">
-            Copyright © {{ date }} Vue Notus by
-            <a
-              href="https://www.creative-tim.com?ref=vn-footer"
-              class="text-blueGray-500 hover:text-blueGray-800"
-            >
-              Creative Tim
-            </a>
+            Copyright © {{ date }} Intex international
+            <a class="text-blueGray-500 hover:text-blueGray-800"></a>
             .
           </div>
         </div>
