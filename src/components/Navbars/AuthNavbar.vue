@@ -30,7 +30,7 @@
           "
           to="/"
         >
-          Vue Notus
+          {{ this.username }}
         </router-link>
         <button
           class="
@@ -87,7 +87,7 @@
                   mr-2
                 "
               />
-              Docs
+              Learn Forex & Crypto
             </a>
           </li>
         </ul>
@@ -192,7 +192,7 @@
               "
               type="button"
             >
-              <i class="fas fa-arrow-alt-circle-down"></i> Download
+              <i class="fas fa-arrow-alt-circle-down"></i> Mini Statement
             </button>
           </li>
         </ul>
@@ -202,12 +202,39 @@
 </template>
 <script>
 import PagesDropdown from "@/components/Dropdowns/PagesDropdown.vue";
-
+import firebase from "firebase";
 export default {
   data() {
     return {
       navbarOpen: false,
+      username: "ble",
+      phonenumber: "",
+      activated: false,
+      balance: 0,
+      plan: "",
+      uid: "",
+      downlines: 0,
+      cashout: 0,
+      downline_bonus: 0,
     };
+  },
+  mounted: function () {
+    firebase.auth().onAuthStateChanged((user) => {
+      var user_mail = user.email;
+      const db = firebase.firestore();
+      db.collection("users")
+        .doc(user_mail)
+        .get()
+        .then((snapshot) => {
+          var data = snapshot.data();
+          this.username = data.username;
+          this.balance = data.balance;
+          this.activated = data.activated;
+          this.downlines = data.downlines;
+          this.plan = data.plan;
+          this.downline_bonus = data.downline_bonus;
+        });
+    });
   },
   methods: {
     setNavbarOpen() {

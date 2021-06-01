@@ -199,7 +199,7 @@
             no-underline
           "
         >
-          Admin Layout Pages
+          User Pages
         </h6>
         <!-- Navigation -->
 
@@ -238,10 +238,10 @@
                 ]"
               >
                 <i
-                  class="fas fa-tools mr-2 text-sm"
+                  class="fa fa-cog mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                My account
+                Profile
               </a>
             </router-link>
           </li>
@@ -262,13 +262,13 @@
                   class="fas fa-table mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Tables
+                Transactions
               </a>
             </router-link>
           </li>
 
           <li class="items-center">
-            <router-link to="/admin/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/profile" v-slot="{ href, navigate, isActive }">
               <a
                 :href="href"
                 @click="navigate"
@@ -280,10 +280,10 @@
                 ]"
               >
                 <i
-                  class="fas fa-map-marked mr-2 text-sm"
+                  class="fas fa-box-open mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Maps
+                INVESTMENT PACKAGES
               </a>
             </router-link>
           </li>
@@ -304,7 +304,7 @@
             no-underline
           "
         >
-          Auth Layout Pages
+          How to Earn
         </h6>
         <!-- Navigation -->
 
@@ -322,12 +322,15 @@
               "
               to="/auth/login"
             >
-              <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-              Login
+              <i
+                style="color: #006400"
+                class="far fa-money-bill-alt text-blueGray-300 mr-2 text-sm"
+              ></i>
+              Cash investments
             </router-link>
           </li>
 
-          <li class="items-center">
+          <li class="items-center" style="color: #f7931a">
             <router-link
               class="
                 text-blueGray-700
@@ -340,8 +343,68 @@
               "
               to="/auth/register"
             >
-              <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-              Register
+              <i class="fab fa-btc text-blueGray-300 mr-2 text-sm" style="color: #f7931a"></i>
+              Buy & Sell crypto
+            </router-link>
+          </li>
+
+          <li class="items-center" style="color: #800080">
+            <router-link
+              class="
+                text-blueGray-700
+                hover:text-blueGray-500
+                text-xs
+                uppercase
+                py-3
+                font-bold
+                block
+              "
+              to="/auth/register"
+            >
+              <i
+                class="fas fa-user-graduate text-blueGray-300 mr-2 text-sm"
+                style="color: #800080"
+              ></i>
+              Refferal Program
+            </router-link>
+          </li>
+
+          <li class="items-center" style="color: #f7931a">
+            <router-link
+              class="
+                text-blueGray-700
+                hover:text-blueGray-500
+                text-xs
+                uppercase
+                py-3
+                font-bold
+                block
+              "
+              to="/auth/register"
+            >
+              <i class="fas fa-dice text-blueGray-300 mr-2 text-sm" style="color: blue"></i>
+              Spin & Win
+            </router-link>
+          </li>
+
+          <li class="items-center" style="color: #f7931a">
+            <router-link
+              class="
+                text-blueGray-700
+                hover:text-blueGray-500
+                text-xs
+                uppercase
+                py-3
+                font-bold
+                block
+              "
+              to="/auth/register"
+            >
+              <i
+                class="fas fa-question-circle text-blueGray-300 mr-2 text-sm"
+                style="color: red"
+              ></i>
+              Surveys
             </router-link>
           </li>
         </ul>
@@ -361,7 +424,7 @@
             no-underline
           "
         >
-          No Layout Pages
+          Actions
         </h6>
         <!-- Navigation -->
 
@@ -379,12 +442,12 @@
               "
               to="/landing"
             >
-              <i class="fas fa-newspaper text-blueGray-300 mr-2 text-sm"></i>
-              Landing Page
+              <i class="fas fa-key text-blueGray-300 mr-2 text-sm"></i>
+              Change password
             </router-link>
           </li>
 
-          <li class="items-center">
+          <li class="items-center" @click="logout()">
             <router-link
               class="
                 text-blueGray-700
@@ -395,10 +458,10 @@
                 font-bold
                 block
               "
-              to="/profile"
+              to="/auth/login"
             >
-              <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
-              Profile Page
+              <i class="fas fa-sign-out-alt text-blueGray-300 mr-2 text-sm"></i>
+              LogOut
             </router-link>
           </li>
         </ul>
@@ -421,159 +484,6 @@
           Documentation
         </h6>
         <!-- Navigation -->
-        <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/colors/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fas fa-paint-brush mr-2 text-blueGray-300 text-base"></i>
-              Styles
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-css3-alt mr-2 text-blueGray-300 text-base"></i>
-              CSS Components
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/angular/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-angular mr-2 text-blueGray-300 text-base"></i>
-              Angular
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-js-square mr-2 text-blueGray-300 text-base"></i>
-              Javascript
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-react mr-2 text-blueGray-300 text-base"></i>
-              NextJS
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-react mr-2 text-blueGray-300 text-base"></i>
-              React
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/svelte/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fas fa-link mr-2 text-blueGray-300 text-base"></i>
-              Svelte
-            </a>
-          </li>
-
-          <li class="inline-flex">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus"
-              target="_blank"
-              class="
-                text-blueGray-700
-                hover:text-blueGray-500
-                text-sm
-                block
-                mb-4
-                no-underline
-                font-semibold
-              "
-            >
-              <i class="fab fa-vuejs mr-2 text-blueGray-300 text-base"></i>
-              VueJS
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>

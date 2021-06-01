@@ -40,7 +40,7 @@
           "
           type="button"
         >
-          Settings
+          Update Profile
         </button>
       </div>
     </div>
@@ -89,6 +89,7 @@
                 Email address
               </label>
               <input
+                id="email"
                 type="email"
                 class="
                   border-0
@@ -117,9 +118,10 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                First Name
+                PhoneNumber
               </label>
               <input
+                id="phonenumber"
                 type="text"
                 class="
                   border-0
@@ -148,9 +150,10 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Last Name
+                Crypto_Wallet
               </label>
               <input
+                id="wallet"
                 type="text"
                 class="
                   border-0
@@ -170,6 +173,7 @@
                   duration-150
                 "
                 value="Jesse"
+                readonly
               />
             </div>
           </div>
@@ -354,7 +358,7 @@ import firebase from "firebase";
 export default {
   data() {
     return {
-      username: "",
+      username: "ble",
       phonenumber: "",
       activated: false,
       balance: 0,
@@ -381,6 +385,10 @@ export default {
           this.plan = data.plan;
           this.downline_bonus = data.downline_bonus;
           this.uid = data.uid;
+          document.getElementById("username").value = data.username;
+          document.getElementById("email").value = data.email;
+          document.getElementById("phonenumber").value = data.phonenumber;
+          document.getElementById("wallet").value = data.uid;
         });
     });
   },
