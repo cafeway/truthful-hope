@@ -94,8 +94,8 @@ export default {
               email: this.email,
               id: size,
             });
+            window.location.reload();
           });
-        alert("your investment was successfully queued");
       } else {
         alert("insufficient balance! kindly recharge  ");
       }

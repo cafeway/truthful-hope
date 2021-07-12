@@ -131,14 +131,6 @@ export default {
           this.plan = data.plan;
           this.downline_bonus = data.downline_bonus;
           this.uid = data.uid;
-
-          db.collection("plans")
-            .doc(data.plan)
-            .get()
-            .then((snapshot) => {
-              let data = snapshot.data();
-              let rates;
-            });
         });
     });
     console.log(this.plans);

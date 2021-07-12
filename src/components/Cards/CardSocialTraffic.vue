@@ -152,7 +152,7 @@ export default {
         .then((snapshot) => {
           snapshot.forEach((doc) => {
             this.bunny.push(doc.data());
-          })
+          });
         });
     });
   },
