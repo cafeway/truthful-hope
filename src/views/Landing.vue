@@ -8,7 +8,7 @@
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
           style="
-            background-image: url('https://s17026.pcdn.co/wp-content/uploads/sites/14/2018/07/cryptobitcoin.jpg');
+            background-image: url('https://i0.wp.com/gadgets-africa.com/wp-content/uploads/2019/11/cryptocurrency.jpg?fit=1200%2C628&ssl=1');
           "
         >
           <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
@@ -19,8 +19,9 @@
               <div class="pr-12">
                 <h3 class="text-white font-semibold text-5xl">Cryptocurrency For Everyone</h3>
                 <p class="mt-4 text-lg text-blueGray-200">
-                  intrex is a secure platform that makes it easy to buy, sell, and store
-                  cryptocurrency like Bitcoin, Ethereum,Invest Money In Crypto Indirectly Via Us.
+                  To bring us closer to our goal of economic freedom, we rethink our brand image.
+                  Our rebrand helps to instill user trust with the aim of advancing options.Decide
+                  what you want, when you want to with our powerful matching engine.
                 </p>
               </div>
             </div>
@@ -93,18 +94,11 @@
                   >
                     <i class="fas fa-handshake"></i>
                   </div>
-                  <h6 class="text-md font-semibold">How To Join Us</h6>
+                  <h6 class="text-md font-semibold">About Us</h6>
                   <p class="mt-2 mb-4 text-blueGray-500"></p>
-                  <ol>
-                    <li>
-                      <i class="far fa-user-circle"></i>
-                      <p>Create an account</p>
-                      <i class="fab fa-amazon-pay"></i>
-                      <p>200ksh reg fee</p>
-                      <i class="fas fa-cash-register"></i>
-                      <p>Deposit & Invest</p>
-                    </li>
-                  </ol>
+                  For over 2 years, Intrex LtD has offered exceptional services to investors
+                  worldwide. Complete your registration today, send us a mail, and our friendly ,
+                  qualified team members will take the time to listen to you.
                 </div>
               </div>
             </div>
@@ -145,16 +139,11 @@
                       style="width: 70px; justify-content: center"
                     ></i>
                   </div>
-                  <h6 class="text-md font-semibold">How To Earn</h6>
-                  <ol>
-                    <li>
-                      <h3>1.Direct Cash Investment</h3>
-                      <h3>2.Buying & Selling Crypto</h3>
-                      <h3>3.Refferal Program</h3>
-                      <h3>4.Spin & Win</h3>
-                      <h3>5.Online Surveys</h3>
-                    </li>
-                  </ol>
+                  <h6 class="text-md font-semibold">Our Main Goal</h6>
+                  Our mission is to simplify complex finance, investing, and trading, to give our
+                  investors the confidence they need to make financial decisions. Helping investors
+                  find the right tools and platforms to invest their resources and manage their
+                  money is key to our mission.
                 </div>
               </div>
             </div>
@@ -192,8 +181,12 @@
                   >
                     <i class="fas fa-fingerprint"></i>
                   </div>
-                  <h6 class="text-xl font-semibold">Verified Company</h6>
+                  <h6 class="text-xl font-semibold">Legal Info</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
+                    Intrex LTD registered under the regulatory scope of the Bank Secrecy Act (BSA)
+                    with CH-ID CH70030196749 to conduct effective investment transactions on
+                    cryptocurrency. With our highly professional Investors and investment brokers,
+                    we provide our investors with helpful terms of gaining passive financial income.
                     intrex is a secure,fully regulated and licensed cryptocurrency exchange
                   </p>
                 </div>
@@ -228,7 +221,7 @@
                 and manages crypto wallets at a fee.
               </p>
               <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                Intex also has a private portal for financial market news covering forex,
+                Intrex also has a private portal for financial market news covering forex,
                 commodities, and indices. We analyze charts,make forecasts and open trades
                 appropriately.
               </p>
@@ -313,7 +306,7 @@
               <img
                 alt="..."
                 class="max-w-full rounded-lg shadow-lg"
-                src="https://wallpaperaccess.com/full/135980.jpg"
+                src="data:image/png;base64,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"
               />
             </div>
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -336,12 +329,14 @@
                 >
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
-                <h3 class="text-3xl font-semibold">Global growing company</h3>
+                <h3 class="text-3xl font-semibold">Our Expertise</h3>
                 <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
-                  Our services are Currenlty offered in All growing african countries.
+                  Use cashback and other advantages for a more comfortable trading experience with
+                  minimal risks along with indulgence in trade and analysis of multiple assets for
+                  any currency, commodities, stocks, cryptocurrencies
                 </p>
                 <hr />
-                <p><b> Our Platform has:</b></p>
+                <p><b>Our Trusted Affiliates:</b></p>
                 <ul class="list-none mt-6">
                   <li class="py-2">
                     <div class="flex items-center">
@@ -356,15 +351,20 @@
                             uppercase
                             rounded-full
                             text-emerald-600
-                            bg-emerald-200
                             mr-3
                           "
                         >
-                          <i class="fas fa-fingerprint"></i>
+                          <span style="width: 40px">
+                            <img
+                              src="https://e7.pngegg.com/pngimages/834/472/png-clipart-google-cloud-icon-google-cloud-platform-cloud-computing-amazon-web-services-virtual-private-cloud-cloud-computing-text-trademark-thumbnail.png"
+                            />
+                          </span>
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Secure & Safe Servers</h4>
+                        <img
+                          src="https://play-lh.googleusercontent.com/en2GK3lyzFXplv-rMvd5E5cIhBUQXWNU5nN3GfwFcaJmghHTbFYEPAVE9meLceBq338"
+                        />
                       </div>
                     </div>
                   </li>
@@ -385,11 +385,15 @@
                             mr-3
                           "
                         >
-                          <i class="fab fa-html5"></i>
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMRh3m3MgS6PMKGinPy_REGCbLf50X8cRjbny9MySsSWIT1N28DpU3mfO99R5sxYS81Hs&usqp=CAU"
+                          />
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Amazing User Interface</h4>
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAJW9LZ_ze93HN1CisxSl3V7wnmc36aMyliA&usqp=CAU"
+                        />
                       </div>
                     </div>
                   </li>
@@ -410,11 +414,11 @@
                             mr-3
                           "
                         >
-                          <i class="fab fa-free-code-camp"></i>
+                          <!-- <i class="fab fa-free-code-camp"></i> -->
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Dynamic  & up-to date content</h4>
+                        <div></div>
                       </div>
                     </div>
                   </li>
@@ -548,7 +552,7 @@
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">Alexa Smith</h5>
                   <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                    UI/UX Designer
+                    CRYPTO ANALYST
                   </p>
                   <div class="mt-6">
                     <button
@@ -715,7 +719,6 @@
             ></polygon>
           </svg>
         </div>
-
       </section>
       <section class="relative block py-24 lg:pt-0 bg-blueGray-800">
         <div class="container mx-auto px-4">
@@ -873,6 +876,15 @@ import team3 from "@/assets/img/team-3-800x800.jpg";
 import team4 from "@/assets/img/team-4-470x470.png";
 
 export default {
+  mounted: function () {
+    let externalScript = document.createElement("script");
+    externalScript.setAttribute("src", "https://code.iconify.design/1/1.0.7/iconify.min.js");
+    document.head.appendChild(externalScript);
+
+    let external = document.createElement("script");
+    external.setAttribute("src", "https://commerce.coinbase.com/v1/checkout.js?version=201807");
+    document.head.appendChild(externalScript);
+  },
   data() {
     return {
       team1,

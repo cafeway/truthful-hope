@@ -130,7 +130,7 @@
                 "
                 to="/"
               >
-                Vue Notus
+                {{ this.username }}
               </router-link>
             </div>
             <div class="w-6/12 flex justify-end">
@@ -262,7 +262,7 @@
                   class="fas fa-table mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Transactions
+                YOUR INVESTMENTS
               </a>
             </router-link>
           </li>
@@ -287,28 +287,53 @@
               </a>
             </router-link>
           </li>
+          <li class="items-center">
+            <router-link to="/admin/maps" v-slot="{ href, navigate, isActive }">
+              <a
+                :href="href"
+                @click="navigate"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-emerald-500 hover:text-emerald-600'
+                    : 'text-blueGray-700 hover:text-blueGray-500',
+                ]"
+              >
+                <i
+                  class="fas fa-shopping-cart mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
+                ></i>
+                CASHOUT PANEL
+              </a>
+            </router-link>
+          </li>
+          <li class="items-center">
+            <router-link to="/profile" v-slot="{ href, navigate, isActive }">
+              <a
+                :href="href"
+                @click="navigate"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-emerald-500 hover:text-emerald-600'
+                    : 'text-blueGray-700 hover:text-blueGray-500',
+                ]"
+              >
+                <i
+                  class="fas fa-box-open mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
+                ></i>
+                HOW TO DEPOSIT
+              </a>
+            </router-link>
+          </li>
         </ul>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full" />
-        <!-- Heading -->
-        <h6
-          class="
-            md:min-w-full
-            text-blueGray-500 text-xs
-            uppercase
-            font-bold
-            block
-            pt-1
-            pb-4
-            no-underline
-          "
-        >
-          How to Earn
-        </h6>
+
         <!-- Navigation -->
 
-        <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+        <!-- <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
           <li class="items-center">
             <router-link
               class="
@@ -407,8 +432,7 @@
               Surveys
             </router-link>
           </li>
-        </ul>
-
+        </ul> -->
         <!-- Divider -->
         <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
@@ -520,10 +544,9 @@ export default {
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
-      var user_mail = user.email;
       const db = firebase.firestore();
       db.collection("users")
-        .doc(user_mail)
+        .doc(user.email)
         .get()
         .then((snapshot) => {
           var data = snapshot.data();

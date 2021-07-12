@@ -16,7 +16,7 @@
     <div class="rounded-t bg-white mb-0 px-6 py-6">
       <div class="text-center flex justify-between">
         <h6 class="text-blueGray-700 text-xl font-bold">
-          crypto_wallet: <small>{{ this.uid }}</small>
+          USER ID: <small>{{ this.uid }}</small>
         </h6>
         <button
           class="
@@ -76,7 +76,6 @@
                   transition-all
                   duration-150
                 "
-                value="brian"
               />
             </div>
           </div>
@@ -108,7 +107,6 @@
                   transition-all
                   duration-150
                 "
-                value="jesse@example.com"
               />
             </div>
           </div>
@@ -140,7 +138,6 @@
                   transition-all
                   duration-150
                 "
-                value="Lucky"
               />
             </div>
           </div>
@@ -150,7 +147,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Crypto_Wallet
+                ID
               </label>
               <input
                 id="wallet"
@@ -172,7 +169,6 @@
                   transition-all
                   duration-150
                 "
-                value="Jesse"
                 readonly
               />
             </div>
@@ -181,7 +177,7 @@
 
         <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Contact Information</h6>
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">More Information</h6>
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
@@ -189,7 +185,24 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Address
+                InviteLink
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-link-45deg"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"
+                    />
+                    <path
+                      d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"
+                    />
+                  </svg>
+                </span>
               </label>
               <input
                 type="text"
@@ -210,11 +223,11 @@
                   transition-all
                   duration-150
                 "
-                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                id="inviteLink"
               />
             </div>
           </div>
-          <div class="w-full lg:w-4/12 px-4">
+          <!--<div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -241,17 +254,16 @@
                   transition-all
                   duration-150
                 "
-                value="New York"
               />
             </div>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
+          </div> -->
+          <!-- <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Country
+                Continent
               </label>
               <input
                 type="text"
@@ -272,11 +284,11 @@
                   transition-all
                   duration-150
                 "
-                value="United States"
+                value="Africa"
               />
             </div>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
+          </div> -->
+          <!--<div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -306,12 +318,12 @@
                 value="Postal Code"
               />
             </div>
-          </div>
+          </div> -->
         </div>
 
         <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">About Me</h6>
+        <!-- <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">About Me</h6>
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
@@ -348,7 +360,7 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>
@@ -389,8 +401,20 @@ export default {
           document.getElementById("email").value = data.email;
           document.getElementById("phonenumber").value = data.phonenumber;
           document.getElementById("wallet").value = data.uid;
+          this.getlink();
         });
     });
+  },
+  methods: {
+    getlink: function () {
+      var urlgenerator = require("urlgenerator");
+      var createURLwithParameters = urlgenerator.createURLwithParameters;
+      var baseURL = "https://intrex.netlify.app/auth/register";
+      var referee = firebase.auth().currentUser.uid;
+      var parameters = { uid: referee };
+      var finalURL = createURLwithParameters(baseURL, parameters);
+      document.getElementById("inviteLink").value = finalURL;
+    },
   },
 };
 </script>

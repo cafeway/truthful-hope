@@ -3,7 +3,7 @@
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">Fox Queue</h3>
+          <h3 class="font-semibold text-base text-blueGray-700">Bunny Queue</h3>
         </div>
         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
           <button
@@ -27,7 +27,7 @@
             "
             type="button"
           >
-            3
+            2
           </button>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default {
           this.email = data.email;
           this.downline_bonus = data.downline_bonus;
         });
-      db.collection("fox")
+      db.collection("bunny")
         .where("email", "==", user_mail)
         .get()
         .then((snapshot) => {

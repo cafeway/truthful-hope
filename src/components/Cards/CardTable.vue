@@ -10,7 +10,7 @@
             class="font-semibold text-lg"
             :class="[color === 'light' ? 'text-blueGray-700' : 'text-white']"
           >
-            Card Tables
+            Transactions Statement
           </h3>
         </div>
       </div>
@@ -39,7 +39,7 @@
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Project
+              Package
             </th>
             <th
               class="
@@ -60,7 +60,7 @@
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Budget
+              Amount
             </th>
             <th
               class="
@@ -102,7 +102,7 @@
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Users
+              Cashout
             </th>
             <th
               class="
@@ -123,7 +123,7 @@
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Completion
+              Ticker
             </th>
             <th
               class="

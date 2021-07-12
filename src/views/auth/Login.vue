@@ -203,8 +203,8 @@
           </div>
         </div>
         <div class="flex flex-wrap mt-6 relative">
-          <div class="w-1/2">
-            <a href="javascript:void(0)" class="text-blueGray-200">
+          <div class="w-1/2" @click="resetPassword()">
+            <a class="text-blueGray-200">
               <small>Forgot password?</small>
             </a>
           </div>
@@ -235,12 +235,15 @@ export default {
     };
   },
   methods: {
+    resetPassword: function () {
+      alert("asds");
+    },
     login() {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then((data) => {
-          console.log(data);
+          console.log(data.user.gb);
           this.$router.push("/admin/dashboard");
         })
         .catch((err) => {

@@ -1,7 +1,10 @@
 import { createApp } from "vue";
 import firebase from "firebase";
+
+//sweet alert
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+
 import { createWebHistory, createRouter } from "vue-router";
 // styles
 
@@ -23,6 +26,7 @@ import Dashboard from "@/views/admin/Dashboard.vue";
 import Settings from "@/views/admin/Settings.vue";
 import Tables from "@/views/admin/Tables.vue";
 import Maps from "@/views/admin/Maps.vue";
+import checkout from "@/views/admin/checkout.vue";
 
 // views for Auth layout
 
@@ -33,8 +37,7 @@ import Register from "@/views/auth/Register.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
-
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
   authDomain: "wise-fex.firebaseapp.com",
   projectId: "wise-fex",
@@ -71,6 +74,10 @@ const routes = [
       {
         path: "/admin/maps",
         component: Maps,
+      },
+      {
+        path: "/admin/checkout",
+        component: checkout,
       },
     ],
   },
