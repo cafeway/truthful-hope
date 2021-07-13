@@ -20,6 +20,11 @@ status = 200
   edge_handler = "filterRequests"
 
   [[redirects]]
+  from = "https://promaxcash.com/auth/register"
+  to = "https://promaxcash.netlify.app"
+  status = 200
+  edge_handler = "filterRequests"
+  [[redirects]]
   from = "auth/login"
   to = "admin/dashboard"
   status = 200
