@@ -35,7 +35,6 @@ import Register from "@/views/auth/Register.vue";
 
 // views without layouts
 
-import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
 var firebaseConfig = {
   apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
@@ -106,7 +105,7 @@ const routes = [
   },
   {
     path: "/",
-    component: Landing,
+    component: Login,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];

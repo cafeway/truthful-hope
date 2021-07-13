@@ -74,7 +74,7 @@
                 uppercase
                 font-bold
               "
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-auth-navbar"
+              href="#"
             >
               <i
                 class="
@@ -87,13 +87,8 @@
                   mr-2
                 "
               />
-              Learn Forex & Crypto
+              Earn Fast Via Our Queue system
             </a>
-          </li>
-        </ul>
-        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-          <li class="flex items-center">
-            <PagesDropdown />
           </li>
         </ul>
       </div>
@@ -101,7 +96,6 @@
   </nav>
 </template>
 <script>
-import PagesDropdown from "@/components/Dropdowns/PagesDropdown.vue";
 import firebase from "firebase";
 export default {
   data() {
@@ -140,9 +134,6 @@ export default {
     setNavbarOpen() {
       this.navbarOpen = !this.navbarOpen;
     },
-  },
-  components: {
-    PagesDropdown,
   },
 };
 </script>
