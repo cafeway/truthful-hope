@@ -14,7 +14,7 @@ status = 200
   edge_handler = "filterRequests"
 
   [[redirects]]
-  from = "https://promax.netlify.com/register"
+  from = "https://promaxcash.com/register"
   to = "auth/register"
   status = 200
   edge_handler = "filterRequests"

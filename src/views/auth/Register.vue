@@ -267,6 +267,23 @@
                   Create Account
                 </button>
               </div>
+              <li class="items-center" @click="logout()">
+                <router-link
+                  class="
+                    text-blueGray-700
+                    hover:text-blueGray-500
+                    text-xs
+                    uppercase
+                    py-3
+                    font-bold
+                    block
+                  "
+                  to="/auth/login"
+                >
+                  <i class="fas fa-sign-out-alt text-blueGray-300 mr-2 text-sm"></i>
+                  Log in
+                </router-link>
+              </li>
             </form>
           </div>
         </div>
@@ -298,6 +315,7 @@ export default {
     let splitted_urls = url.split("uid=");
     // eslint-disable-next-line camelcase
     let referee = splitted_urls[1];
+    this.referee_uid = referee;
     console.log(referee);
   },
   methods: {
@@ -328,11 +346,14 @@ export default {
             .then((snapshot) => {
               snapshot.forEach((doc) => {
                 let id = doc.id;
-                db.collection("users").doc(id).collection("downlines").add({
-                  id: new Date(),
-                  name: this.username,
-                  phone: this.form.phone,
-                });
+                db.collection("users")
+                  .doc(id)
+                  .collection("downlines")
+                  .add({
+                    id: Math.floor(Math.random() * 10000 + 1),
+                    name: this.form.username,
+                    phone: this.form.phonenumber,
+                  });
               });
             });
           this.$swal({

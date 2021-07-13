@@ -599,6 +599,123 @@ with blueGray Latest commit 66c1aa2 on Mar 19 History 1 contributor 517 lines (5
               </div>
             </td>
           </tr>
+          <tr>
+            <th
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+                text-left
+                flex
+                items-center
+              "
+            >
+              <span
+                class="iconify"
+                style="width: 40px; height: 40px"
+                data-icon="emojione:lion-face"
+                data-inline="false"
+              ></span>
+              <span
+                class="ml-3 font-bold"
+                :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
+              >
+                Simba
+              </span>
+            </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              5000
+            </td>
+
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex">
+                <img
+                  :src="team1"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                />
+                <img
+                  :src="team2"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team3"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team4"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+              </div>
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex items-center">
+                <button
+                  class="
+                    bg-emerald-500
+                    active:bg-emerald-600
+                    uppercase
+                    text-white
+                    font-bold
+                    hover:shadow-md
+                    shadow
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    outline-none
+                    focus:outline-none
+                    sm:mr-2
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                  @click="simba('simba')"
+                >
+                  Initiate Push
+                </button>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -632,7 +749,8 @@ export default {
       lv2: "",
       username: "",
       email: "",
-      phone: "",
+      phonenumber: "",
+      size: 0,
     };
   },
   created() {
@@ -652,19 +770,23 @@ export default {
         .get()
         .then((snapshot) => {
           var data = snapshot.data();
-          this.username = data.username;
-          this.balance = data.phonenumber;
+          this.phonenumber = data.phonenumber;
           this.email = data.email;
+          this.username = data.username;
+          this.upline = data.upline;
         });
     });
   },
   methods: {
     panda: function (name) {
+      let username = this.username;
+      let phonenumber = this.phonenumber;
+      let email = this.email;
       let db = firebase.firestore();
       window.FlutterwaveCheckout({
-        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
         tx_ref: "registration fees" + new Date(),
-        amount: 500,
+        amount: 1,
         currency: "KES",
         country: "KE",
         payment_option: "mpesa,card,ussd,account",
@@ -674,25 +796,31 @@ export default {
           name: this.username,
         },
         callback: function () {
+          let user = username;
+          let phone = phonenumber;
+          let mail = email;
           db.collection(name)
             .get()
             .then((snapshot) => {
               let size = snapshot.size;
               db.collection(name).add({
                 id: size,
-                username: this.username,
-                phone: this.phone,
+                username: user,
+                phone: phone,
                 amount: 500,
                 verified: false,
+                email: mail,
               });
             });
         },
       });
     },
     bunny: function (name) {
+      let username = this.username;
+      let phonenumber = this.phonenumber;
       let db = firebase.firestore();
       window.FlutterwaveCheckout({
-        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
         tx_ref: "registration fees" + new Date(),
         amount: 1000,
         currency: "KES",
@@ -704,14 +832,16 @@ export default {
           name: this.username,
         },
         callback: function () {
+          let phone = phonenumber;
+          let uname = username;
           db.collection(name)
             .get()
             .then((snapshot) => {
               let size = snapshot.size;
               db.collection(name).add({
                 id: size,
-                username: this.username,
-                phone: this.phone,
+                name: uname,
+                phone: phone,
                 amount: 1000,
                 verified: false,
               });
@@ -720,9 +850,11 @@ export default {
       });
     },
     fox: function (name) {
+      let username = this.username;
+      let phonenumber = this.phonenumber;
       let db = firebase.firestore();
       window.FlutterwaveCheckout({
-        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
         tx_ref: "registration fees" + new Date(),
         amount: 1500,
         currency: "KES",
@@ -734,14 +866,16 @@ export default {
           name: this.username,
         },
         callback: function () {
+          let phone = phonenumber;
+          let uname = username;
           db.collection(name)
             .get()
             .then((snapshot) => {
               let size = snapshot.size;
               db.collection(name).add({
                 id: size,
-                username: this.username,
-                phone: this.phone,
+                name: uname,
+                phone: phone,
                 amount: 1500,
                 verified: false,
               });
@@ -750,11 +884,45 @@ export default {
       });
     },
     rhino: function (name) {
+      let username = this.username;
+      let phonenumber = this.phonenumber;
       let db = firebase.firestore();
       window.FlutterwaveCheckout({
-        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
         tx_ref: "registration fees" + new Date(),
         amount: 2000,
+        currency: "KES",
+        country: "KE",
+        payment_option: "mpesa,card,ussd,account",
+        customer: {
+          email: this.email,
+          phone_number: this.phone,
+          name: this.username,
+        },
+        callback: function () {
+          let phone = phonenumber;
+          let uname = username;
+          db.collection(name)
+            .get()
+            .then((snapshot) => {
+              let size = snapshot.size;
+              db.collection(name).add({
+                id: size,
+                name: uname,
+                phone: phone,
+                amount: 2000,
+                verified: false,
+              });
+            });
+        },
+      });
+    },
+    simba: function (name) {
+      let db = firebase.firestore();
+      window.FlutterwaveCheckout({
+        public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
+        tx_ref: "registration fees" + new Date(),
+        amount: 5000,
         currency: "KES",
         country: "KE",
         payment_option: "mpesa,card,ussd,account",
@@ -772,8 +940,46 @@ export default {
                 id: size,
                 username: this.username,
                 phone: this.phone,
-                amount: 2000,
+                amount: 5000,
                 verified: false,
+              });
+            });
+          db.collection("users")
+            .where("uid", "==", this.upline)
+            .get()
+            .then((snapshot) => {
+              snapshot.forEach((doc) => {
+                let id = doc.id;
+                db.collection("users")
+                  .doc(id)
+                  .get()
+                  .then((snapshot) => {
+                    let data = snapshot.data();
+                    let dbonus = data.downline_bonus;
+                    let bonus = dbonus + 50;
+                    db.collection("users").update({
+                      downline_bonus: bonus,
+                    });
+                  });
+              });
+            });
+          db.collection("users")
+            .where("uid", "==", this.upline)
+            .get()
+            .then((snapshot) => {
+              snapshot.forEach((doc) => {
+                let id = doc.id;
+                db.collection("users")
+                  .doc(id)
+                  .get()
+                  .then((snapshot) => {
+                    let data = snapshot.data();
+                    let dbonus = data.downline_bonus;
+                    let bonus = dbonus + 500;
+                    db.collection("users").update({
+                      downline_bonus: bonus,
+                    });
+                  });
               });
             });
         },

@@ -105,7 +105,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="i in downlines" :key="i">
             <th
               class="
                 border-t-0
@@ -125,7 +125,7 @@
                 class="ml-3 font-bold"
                 :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
               >
-                Argon Design System
+                {{ i.id }}
               </span>
             </th>
             <td
@@ -139,7 +139,7 @@
                 p-4
               "
             >
-              $2,500 USD
+              {{ i.name }}
             </td>
             <td
               class="
@@ -152,7 +152,7 @@
                 p-4
               "
             >
-              <i class="fas fa-circle text-orange-500 mr-2"></i> pending
+              <i class="fas fa-circle text-orange-500 mr-2"></i> {{ i.phone }}
             </td>
           </tr>
         </tbody>
@@ -171,7 +171,7 @@ import team1 from "@/assets/img/team-1-800x800.jpg";
 import team2 from "@/assets/img/team-2-800x800.jpg";
 import team3 from "@/assets/img/team-3-800x800.jpg";
 import team4 from "@/assets/img/team-4-470x470.png";
-
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -184,9 +184,27 @@ export default {
       team2,
       team3,
       team4,
+      downlines: [],
+      upline: "",
     };
   },
-
+  mounted: function () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        let user_mail = user.email;
+        let db = firebase.firestore();
+        db.collection("users")
+          .doc(user_mail)
+          .collection("downlines")
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              this.downlines.push(doc.data());
+            });
+          });
+      }
+    });
+  },
   props: {
     color: {
       default: "light",
