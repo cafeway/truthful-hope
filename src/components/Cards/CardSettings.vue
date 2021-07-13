@@ -409,7 +409,7 @@ export default {
     getlink: function () {
       var urlgenerator = require("urlgenerator");
       var createURLwithParameters = urlgenerator.createURLwithParameters;
-      var baseURL = "https://promax.netlify.app/auth/register";
+      var baseURL = "https://promaxcash.com/register";
       var referee = firebase.auth().currentUser.uid;
       var parameters = { uid: referee };
       var finalURL = createURLwithParameters(baseURL, parameters);
