@@ -21,7 +21,7 @@ status = 200
 
   [[redirects]]
   from = "https://promaxcash.com/auth/register"
-  to = "https://promaxcash.netlify.app"
+  to = "https://promaxcash.netlify.app/auth/register"
   status = 200
   edge_handler = "filterRequests"
   [[redirects]]
