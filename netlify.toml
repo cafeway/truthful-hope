@@ -1,0 +1,27 @@
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+[[redirects]]
+  from = "/auth/login"
+  to = "/auth/register"
+  status = 200
+  edge_handler = "filterRequests"
+[[redirects]]
+  from = "/"
+  to = "auth/login"
+  status = 200
+  edge_handler = "filterRequests"
+
+  [[redirects]]
+  from = "https://promax.netlify.com/register"
+  to = "auth/register"
+  status = 200
+  edge_handler = "filterRequests"
+
+  [[redirects]]
+  from = "auth/login"
+  to = "admin/dashboard"
+  status = 200
+  edge_handler = "filterRequests"
+ 

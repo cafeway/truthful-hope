@@ -262,7 +262,7 @@
                   class="fas fa-table mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                YOUR INVESTMENTS
+                YOUR DOWNLINES
               </a>
             </router-link>
           </li>
@@ -283,7 +283,7 @@
                   class="fas fa-box-open mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                INVESTMENT PACKAGES
+                INVESTMENT PANEL
               </a>
             </router-link>
           </li>
@@ -323,7 +323,7 @@
                   class="fas fa-box-open mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                HOW TO DEPOSIT
+                RECHARGE HERE
               </a>
             </router-link>
           </li>
@@ -489,25 +489,6 @@
             </router-link>
           </li>
         </ul>
-
-        <!-- Divider -->
-        <hr class="my-4 md:min-w-full" />
-        <!-- Heading -->
-        <h6
-          class="
-            md:min-w-full
-            text-blueGray-500 text-xs
-            uppercase
-            font-bold
-            block
-            pt-1
-            pb-4
-            no-underline
-          "
-        >
-          Documentation
-        </h6>
-        <!-- Navigation -->
       </div>
     </div>
   </nav>

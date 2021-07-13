@@ -1,122 +1,649 @@
+Skip to content Search or jump to… Pull requests Issues Marketplace Explore @cafeway
+creativetimofficial / vue-notus 9 228 58 Code Issues Pull requests Actions Projects Wiki Security
+Insights vue-notus/src/components/Cards/CardTable.vue @einazare einazare refactor: change coolGray
+with blueGray Latest commit 66c1aa2 on Mar 19 History 1 contributor 517 lines (514 sloc) 18.4 KB
+
 <template>
-  <div>
-    <section class="card container grid">
-      <div class="card__container grid">
-        <!--==================== CARD 1 ====================-->
-        <article class="card__content grid">
-          <div class="card__pricing">
-            <span class="card__pricing-month">500</span>
-          </div>
-
-          <header class="card__header">
-            <div class="card__header-circle grid">
-              <span
-                class="iconify"
-                style="height: 100px; width: 50px"
-                data-icon="noto:panda"
-                data-inline="false"
-              ></span>
-            </div>
-            <hr />
-            <h1 class="card__header-title text-success">Panda Plan</h1>
-          </header>
-          <button class="card__button" @click="invest(500, 'panda')">Choose this plan</button>
-        </article>
-
-        <!--==================== CARD 2 ====================-->
-        <article class="card__content grid">
-          <div class="card__pricing">
-            <span class="card__pricing-month">1000</span>
-          </div>
-
-          <header class="card__header">
-            <div class="card__header-circle grid">
-              <span
-                class="iconify"
-                style="height: 100px; width: 50px"
-                data-icon="emojione:rabbit-face"
-                data-inline="false"
-              ></span>
-            </div>
-            <hr />
-            <h1 class="card__header-title">Bunny Plan</h1>
-          </header>
-
-          <button class="card__button" @click="invest(1000, 'bunny')">Choose this plan</button>
-        </article>
-
-        <!--==================== CARD 3 ====================-->
-        <article class="card__content grid">
-          <div class="card__pricing">
-            <span class="card__pricing-month">1500</span>
-          </div>
-
-          <header class="card__header">
-            <div class="card__header-circle grid">
-              <span
-                class="iconify"
-                style="height: 100px; width: 50px"
-                data-icon="noto:fox"
-                data-inline="false"
-              ></span>
-            </div>
-            <hr />
-            <span class="card__header-subtitle"></span>
-            <h1 class="card__header-title">Fox Plan</h1>
-          </header>
-          <button class="card__button" @click="invest(1500, 'fox')">Choose this plan</button>
-        </article>
+  <div
+    class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+    :class="[color === 'light' ? 'bg-white' : 'bg-emerald-900 text-white']"
+  >
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+      <div class="flex flex-wrap items-center">
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <h3
+            class="font-semibold text-lg"
+            :class="[color === 'light' ? 'text-blueGray-700' : 'text-white']"
+          >
+            Package Tables
+          </h3>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="block w-full overflow-x-auto">
+      <!-- Projects table -->
+      <table class="items-center w-full bg-transparent border-collapse">
+        <thead>
+          <tr>
+            <th
+              class="
+                px-6
+                align-middle
+                border border-solid
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            >
+              Amount
+            </th>
+            <th
+              class="
+                px-6
+                align-middle
+                border border-solid
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            >
+              Package Name
+            </th>
+            <th
+              class="
+                px-6
+                align-middle
+                border border-solid
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            >
+              Users in Queue
+            </th>
+            <th
+              class="
+                px-6
+                align-middle
+                border border-solid
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            >
+              Choose Package
+            </th>
+            <th
+              class="
+                px-6
+                align-middle
+                border border-solid
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            ></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+                text-left
+                flex
+                items-center
+              "
+            >
+              <span
+                class="iconify"
+                style="width: 40px; height: 40px"
+                data-icon="emojione:panda-face"
+                data-inline="false"
+              ></span>
+              <span
+                class="ml-3 font-bold"
+                :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
+              >
+                Panda
+              </span>
+            </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              500
+            </td>
+
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex">
+                <img
+                  :src="team1"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                />
+                <img
+                  :src="team2"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team3"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team4"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+              </div>
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex items-center">
+                <button
+                  class="
+                    bg-emerald-500
+                    active:bg-emerald-600
+                    uppercase
+                    text-white
+                    font-bold
+                    hover:shadow-md
+                    shadow
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    outline-none
+                    focus:outline-none
+                    sm:mr-2
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                  @click="panda('panda')"
+                >
+                  Initiate Push
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+                text-left
+                flex
+                items-center
+              "
+            >
+              <span
+                class="iconify"
+                style="width: 40px; height: 40px"
+                data-icon="fxemoji:bunny"
+                data-inline="false"
+              ></span>
+              <span
+                class="ml-3 font-bold"
+                :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
+              >
+                Bunny
+              </span>
+            </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              1000
+            </td>
+
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex">
+                <img
+                  :src="team1"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                />
+                <img
+                  :src="team2"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team3"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team4"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+              </div>
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex items-center">
+                <button
+                  class="
+                    bg-emerald-500
+                    active:bg-emerald-600
+                    uppercase
+                    text-white
+                    font-bold
+                    hover:shadow-md
+                    shadow
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    outline-none
+                    focus:outline-none
+                    sm:mr-2
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                  @click="bunny('bunny')"
+                >
+                  Initiate Push
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+                text-left
+                flex
+                items-center
+              "
+            >
+              <span
+                class="iconify"
+                style="width: 40px; height: 40px"
+                data-icon="emojione:fox"
+                data-inline="false"
+              ></span>
+              <span
+                class="ml-3 font-bold"
+                :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
+              >
+                Fox
+              </span>
+            </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              1500
+            </td>
+
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex">
+                <img
+                  :src="team1"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                />
+                <img
+                  :src="team2"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team3"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team4"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+              </div>
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex items-center">
+                <button
+                  class="
+                    bg-emerald-500
+                    active:bg-emerald-600
+                    uppercase
+                    text-white
+                    font-bold
+                    hover:shadow-md
+                    shadow
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    outline-none
+                    focus:outline-none
+                    sm:mr-2
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                  @click="fox('fox')"
+                >
+                  Initiate Push
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+                text-left
+                flex
+                items-center
+              "
+            >
+              <span
+                class="iconify"
+                style="width: 40px; height: 40px"
+                data-icon="twemoji:rhinoceros"
+                data-inline="false"
+              ></span>
+              <span
+                class="ml-3 font-bold"
+                :class="[color === 'light' ? 'text-blueGray-600' : 'text-white']"
+              >
+                Rhino
+              </span>
+            </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              2000
+            </td>
+
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex">
+                <img
+                  :src="team1"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
+                />
+                <img
+                  :src="team2"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team3"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+                <img
+                  :src="team4"
+                  alt="..."
+                  class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
+                />
+              </div>
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <div class="flex items-center">
+                <button
+                  class="
+                    bg-emerald-500
+                    active:bg-emerald-600
+                    uppercase
+                    text-white
+                    font-bold
+                    hover:shadow-md
+                    shadow
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    outline-none
+                    focus:outline-none
+                    sm:mr-2
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                  @click="rhino('rhino')"
+                >
+                  Initiate Push
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <script>
+import bootstrap from "@/assets/img/bootstrap.jpg";
+import angular from "@/assets/img/angular.jpg";
+import sketch from "@/assets/img/sketch.jpg";
+import react from "@/assets/img/react.jpg";
+import vue from "@/assets/img/react.jpg";
+import team1 from "@/assets/img/team-1-800x800.jpg";
+import team2 from "@/assets/img/team-2-800x800.jpg";
+import team3 from "@/assets/img/team-3-800x800.jpg";
+import team4 from "@/assets/img/team-4-470x470.png";
 import firebase from "firebase";
 export default {
-  name: "Repository",
-
-  methods: {
-    invest: function (plan, name) {
-      console.log(name);
-      console.log(this.balance);
-      if (plan <= this.balance) {
-        let db = firebase.firestore();
-        let NewBalance = this.balance - plan;
-        db.collection("users").doc(this.email).update({
-          balance: NewBalance,
-        });
-        db.collection(name)
-          .get()
-          .then((snapshot) => {
-            let size = snapshot.size;
-            db.collection(name).add({
-              amount: plan,
-              email: this.email,
-              id: size,
-            });
-            window.location.reload();
-          });
-      } else {
-        alert("insufficient balance! kindly recharge  ");
-      }
-    },
-  },
-
   data() {
     return {
+      bootstrap,
+      angular,
+      sketch,
+      react,
+      vue,
+      team1,
+      team2,
+      team3,
+      team4,
+      upline: "",
+      lv1: "",
+      lv2: "",
       username: "",
-      phonenumber: "",
-      activated: false,
-      balance: 0,
-      plan: "",
-      uid: "",
-      downlines: 0,
-      cashout: 0,
-      downline_bonus: 0,
       email: "",
+      phone: "",
     };
   },
-  mounted: function () {
+  created() {
+    const script = document.createElement("script");
+    script.src = "https://checkout.flutterwave.com/v3.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },
+  mounted() {
+    let recaptchaScript = document.createElement("script");
+    recaptchaScript.setAttribute("src", "https://code.iconify.design/1/1.0.7/iconify.min.js");
+    document.head.appendChild(recaptchaScript);
     firebase.auth().onAuthStateChanged((user) => {
       var user_mail = user.email;
       const db = firebase.firestore();
@@ -126,286 +653,141 @@ export default {
         .then((snapshot) => {
           var data = snapshot.data();
           this.username = data.username;
-          this.balance = data.balance;
-          this.activated = data.activated;
-          this.downlines = data.downlines;
-          this.plan = data.plan;
+          this.balance = data.phonenumber;
           this.email = data.email;
-          this.downline_bonus = data.downline_bonus;
         });
     });
   },
+  methods: {
+    panda: function (name) {
+      let db = firebase.firestore();
+      window.FlutterwaveCheckout({
+        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        tx_ref: "registration fees" + new Date(),
+        amount: 500,
+        currency: "KES",
+        country: "KE",
+        payment_option: "mpesa,card,ussd,account",
+        customer: {
+          email: this.email,
+          phone_number: this.phone,
+          name: this.username,
+        },
+        callback: function () {
+          db.collection(name)
+            .get()
+            .then((snapshot) => {
+              let size = snapshot.size;
+              db.collection(name).add({
+                id: size,
+                username: this.username,
+                phone: this.phone,
+                amount: 500,
+                verified: false,
+              });
+            });
+        },
+      });
+    },
+    bunny: function (name) {
+      let db = firebase.firestore();
+      window.FlutterwaveCheckout({
+        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        tx_ref: "registration fees" + new Date(),
+        amount: 1000,
+        currency: "KES",
+        country: "KE",
+        payment_option: "mpesa,card,ussd,account",
+        customer: {
+          email: this.email,
+          phone_number: this.phone,
+          name: this.username,
+        },
+        callback: function () {
+          db.collection(name)
+            .get()
+            .then((snapshot) => {
+              let size = snapshot.size;
+              db.collection(name).add({
+                id: size,
+                username: this.username,
+                phone: this.phone,
+                amount: 1000,
+                verified: false,
+              });
+            });
+        },
+      });
+    },
+    fox: function (name) {
+      let db = firebase.firestore();
+      window.FlutterwaveCheckout({
+        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        tx_ref: "registration fees" + new Date(),
+        amount: 1500,
+        currency: "KES",
+        country: "KE",
+        payment_option: "mpesa,card,ussd,account",
+        customer: {
+          email: this.email,
+          phone_number: this.phone,
+          name: this.username,
+        },
+        callback: function () {
+          db.collection(name)
+            .get()
+            .then((snapshot) => {
+              let size = snapshot.size;
+              db.collection(name).add({
+                id: size,
+                username: this.username,
+                phone: this.phone,
+                amount: 1500,
+                verified: false,
+              });
+            });
+        },
+      });
+    },
+    rhino: function (name) {
+      let db = firebase.firestore();
+      window.FlutterwaveCheckout({
+        public_key: "FLWPUBK-5f67453df7e9775baa8cae9bdc0de688-X",
+        tx_ref: "registration fees" + new Date(),
+        amount: 2000,
+        currency: "KES",
+        country: "KE",
+        payment_option: "mpesa,card,ussd,account",
+        customer: {
+          email: this.email,
+          phone_number: this.phone,
+          name: this.username,
+        },
+        callback: function () {
+          db.collection(name)
+            .get()
+            .then((snapshot) => {
+              let size = snapshot.size;
+              db.collection(name).add({
+                id: size,
+                username: this.username,
+                phone: this.phone,
+                amount: 2000,
+                verified: false,
+              });
+            });
+        },
+      });
+    },
+  },
+  props: {
+    color: {
+      default: "light",
+      validator: function (value) {
+        // The value must match one of these strings
+        return ["light", "dark"].indexOf(value) !== -1;
+      },
+    },
+  },
 };
 </script>
-
-<style>
-/*==================== GOOGLE FONTS ====================*/
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik&display=swap");
-
-/*==================== VARIABLES CSS ====================*/
-:root {
-  /*========== Colors ==========*/
-  /* Change favorite color - Blue 210 - Purple 250 - Green 142 - Pink 340*/
-  --hue-color: 210;
-
-  /* HSL color mode */
-  --first-color: hsl(var(--hue-color), 96%, 54%);
-  --first-color-light: hsl(var(--hue-color), 96%, 69%);
-  --first-color-alt: hsl(var(--hue-color), 96%, 37%);
-  --first-color-lighter: hsl(var(--hue-color), 14%, 96%);
-  --title-color: hsl(var(--hue-color), 12%, 15%);
-  --text-color: hsl(var(--hue-color), 12%, 35%);
-  --text-color-light: hsl(var(--hue-color), 12%, 65%);
-  --white-color: #fff;
-  --body-color: hsl(var(--hue-color), 100%, 99%);
-  --container-color: #fff;
-
-  /*========== Font and typography ==========*/
-  --body-font: "Lato", sans-serif;
-  --pricing-font: "Rubik", sans-serif;
-  --biggest-font-size: 1.75rem;
-  --normal-font-size: 0.938rem;
-  --h2-font-size: 1.25rem;
-  --small-font-size: 0.813rem;
-  --smaller-font-size: 0.75rem;
-  --tiny-font-size: 0.625rem;
-
-  /*========== Margenes Bottom ==========*/
-  --mb-0-25: 0.25rem;
-  --mb-0-5: 0.5rem;
-  --mb-1: 1rem;
-  --mb-1-25: 1.25rem;
-  --mb-1-5: 1.5rem;
-  --mb-2: 2rem;
-}
-
-@media screen and (min-width: 968px) {
-  :root {
-    --biggest-font-size: 2.125rem;
-    --h2-font-size: 1.5rem;
-    --normal-font-size: 1rem;
-    --small-font-size: 0.875rem;
-    --smaller-font-size: 0.813rem;
-    --tiny-font-size: 0.688rem;
-  }
-}
-
-/*==================== BASE ====================*/
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/*==================== REUSABLE CSS CLASSES ====================*/
-.container {
-  max-width: 1024px;
-  margin-left: var(--mb-1-5);
-  margin-right: var(--mb-1-5);
-}
-
-.grid {
-  display: grid;
-}
-
-/*==================== CARD PRICING ====================*/
-.card {
-  padding: 3rem 0;
-}
-
-.card__container {
-  gap: 3rem 1.25rem;
-}
-
-.card__content {
-  position: relative;
-  background-color: var(--container-color);
-  padding: 2rem 1.5rem 2.5rem;
-  border-radius: 1.75rem;
-  box-shadow: 0 12px 24px hsla(var(--hue-color), 61%, 16%, 0.1);
-  transition: 0.4s;
-}
-
-.card__content:hover {
-  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.15);
-}
-
-.card__header-img {
-  width: 30px;
-  height: 30px;
-}
-
-.card__header-circle {
-  width: 40px;
-  height: 40px;
-  background-color: var(--first-color-lighter);
-  border-radius: 50%;
-  margin-bottom: var(--mb-1);
-  place-items: center;
-}
-
-.card__header-subtitle {
-  display: block;
-  font-size: var(--smaller-font-size);
-  color: var(--text-color-light);
-  text-transform: uppercase;
-  margin-bottom: var(--mb-0-25);
-}
-
-.card__header-title {
-  font-size: var(--biggest-font-size);
-  color: var(--title-color);
-  margin-bottom: var(--mb-1);
-}
-
-.card__pricing {
-  position: absolute;
-  background: linear-gradient(157deg, var(--first-color-light) -12%, var(--first-color) 109%);
-  width: 60px;
-  height: 88px;
-  right: 1.5rem;
-  top: -1rem;
-  padding-top: 1.25rem;
-  text-align: center;
-}
-
-.card__pricing-number {
-  font-family: var(--pricing-font);
-}
-
-.card__pricing-symbol {
-  font-size: var(--smaller-font-size);
-}
-
-.card__pricing-number {
-  font-size: var(--h2-font-size);
-}
-
-.card__pricing-month {
-  display: block;
-  font-size: var(--tiny-font-size);
-}
-
-.card__pricing-number,
-.card__pricing-month {
-  color: var(--white-color);
-}
-
-.card__pricing::after,
-.card__pricing::before {
-  content: "";
-  position: absolute;
-}
-
-.card__pricing::after {
-  width: 100%;
-  height: 14px;
-  background-color: var(--white-color);
-  left: 0;
-  bottom: 0;
-  clip-path: polygon(0 100%, 50% 0, 100% 100%);
-}
-
-.card__pricing::before {
-  width: 14px;
-  height: 16px;
-  background-color: var(--first-color-alt);
-  top: 0;
-  left: -14px;
-  clip-path: polygon(0 100%, 100% 0, 100% 100%);
-}
-
-.card__list {
-  row-gap: 0.5rem;
-  margin-bottom: var(--mb-2);
-}
-
-.card__list-item {
-  display: flex;
-  align-items: center;
-}
-
-.card__list-icon {
-  font-size: 1.5rem;
-  color: var(--first-color);
-  margin-right: var(--mb-0-5);
-}
-
-.card__button {
-  padding: 1.25rem;
-  border: none;
-  font-size: var(--normal-font-size);
-  border-radius: 0.5rem;
-  background: linear-gradient(157deg, var(--first-color-light) -12%, var(--first-color) 109%);
-  color: var(--white-color);
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.card__button:hover {
-  box-shadow: 0 12px 24px hsla(var(--hue-color), 97%, 54%, 0.2);
-}
-
-/*==================== MEDIA QUERIES ====================*/
-/* For small devices */
-@media screen and (max-width: 320px) {
-  .container {
-    margin-left: var(--mb-1);
-    margin-right: var(--mb-1);
-  }
-  .card__content {
-    padding: 2rem 1.25rem;
-    border-radius: 1rem;
-  }
-}
-
-/* For medium devices */
-@media screen and (min-width: 568px) {
-  .card__container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .card__content {
-    grid-template-rows: repeat(2, max-content);
-  }
-  .card__button {
-    align-self: flex-end;
-  }
-}
-
-/* For large devices */
-@media screen and (min-width: 968px) {
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .card {
-    height: 100vh;
-    align-items: center;
-  }
-  .card__container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .card__header-circle {
-    margin-bottom: var(--mb-1-25);
-  }
-  .card__header-subtitle {
-    font-size: var(--small-font-size);
-  }
-}
-</style>
