@@ -288,8 +288,17 @@ export default {
         email: "",
         phonenumber: "",
         password: "",
+        referee_uid: "",
       },
     };
+  },
+  mounted: function () {
+    this.referee_uid = "";
+    let url = window.location.href;
+    let splitted_urls = url.split("uid=");
+    // eslint-disable-next-line camelcase
+    let referee = splitted_urls[1];
+    console.log(referee);
   },
   methods: {
     submit: function () {
@@ -311,7 +320,21 @@ export default {
             cashouts: 0,
             activated: false,
             downline_bonus: 0,
+            upline: this.referee_uid,
           });
+          db.collection("users")
+            .where("uid", "==", this.referee_uid)
+            .get()
+            .then((snapshot) => {
+              snapshot.forEach((doc) => {
+                let id = doc.id;
+                db.collection("users").doc(id).collection("downlines").add({
+                  id: new Date(),
+                  name: this.username,
+                  phone: this.form.phone,
+                });
+              });
+            });
           this.$swal({
             icon: "success",
             text: "account created successfully activate to use",
