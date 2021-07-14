@@ -43,11 +43,11 @@ var firebaseConfig = {
   storageBucket: "promax-cash-b01d7.appspot.com",
   messagingSenderId: "485471035688",
   appId: "1:485471035688:web:a0099d5d5c939e5683f01d",
-  measurementId: "G-GB6NFFL8XQ"
+  measurementId: "G-GB6NFFL8XQ",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+firebase.analytics(); 
 // import Index from "@/views/Index.vue";
 
 // routes
