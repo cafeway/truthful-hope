@@ -324,8 +324,6 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then(() => {
-          var user = firebase.auth().currentUser;
-          user.sendEmailVerification();
           const db = firebase.firestore();
           db.collection("users").doc(this.form.email).set({
             username: this.form.username,
