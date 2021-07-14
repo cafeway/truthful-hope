@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="admin !== 0"></div>
+    <div v-if="role !== 'admin'"></div>
     <div v-else>
       <div class="flex flex-wrap mt-4">
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
@@ -43,6 +43,7 @@ export default {
       cashout: 0,
       downline_bonus: 0,
       admin: null,
+      role: "",
     };
   },
   mounted: function () {
@@ -62,6 +63,7 @@ export default {
           this.downline_bonus = data.downline_bonus;
           this.uid = data.uid;
           this.admin = data.admin;
+          this.role = data.role;
         });
     });
   },

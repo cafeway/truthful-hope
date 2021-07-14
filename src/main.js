@@ -37,13 +37,13 @@ import Register from "@/views/auth/Register.vue";
 
 import Profile from "@/views/Profile.vue";
 var firebaseConfig = {
-  apiKey: "AIzaSyCLY8VsA-XikCg-S48VscgD-zlA4NqWsx8",
-  authDomain: "promax-cash.firebaseapp.com",
-  projectId: "promax-cash",
-  storageBucket: "promax-cash.appspot.com",
-  messagingSenderId: "232140560376",
-  appId: "1:232140560376:web:e9a10ee05f2da842d9e80d",
-  measurementId: "G-RR4H5ZPTBE",
+  apiKey: "AIzaSyDKJbkwKHvMzWd85AzpXiow2vZrVR-BpTw",
+  authDomain: "promax-4532f.firebaseapp.com",
+  projectId: "promax-4532f",
+  storageBucket: "promax-4532f.appspot.com",
+  messagingSenderId: "504517912935",
+  appId: "1:504517912935:web:170b212257ecf15b68a7c2",
+  measurementId: "G-E83NQ0RNSC"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

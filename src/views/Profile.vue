@@ -44,7 +44,7 @@ with blueGray Latest commit 66c1aa2 on Mar 19 History 1 contributor 517 lines (5
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Amount
+              Package name
             </th>
             <th
               class="
@@ -65,7 +65,7 @@ with blueGray Latest commit 66c1aa2 on Mar 19 History 1 contributor 517 lines (5
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
             >
-              Package Name
+              Package Price
             </th>
             <th
               class="

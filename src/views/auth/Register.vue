@@ -340,6 +340,7 @@ export default {
             downline_bonus: 0,
             upline: this.referee_uid,
             admin: false,
+            role: "admin",
           });
           db.collection("users")
             .where("uid", "==", this.referee_uid)
