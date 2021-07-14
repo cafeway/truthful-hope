@@ -16,7 +16,9 @@
     <div class="rounded-t bg-white mb-0 px-6 py-6">
       <div class="text-center flex justify-between">
         <h6 class="text-blueGray-700 text-xl font-bold">
-          USER ID: <small>{{ this.uid }}</small>
+          Invite link:
+          <hr />
+          <small>{{ this.link }}</small>
         </h6>
         <button
           class="
@@ -379,6 +381,7 @@ export default {
       downlines: 0,
       cashout: 0,
       downline_bonus: 0,
+      link: "",
     };
   },
   mounted: function () {
@@ -414,6 +417,7 @@ export default {
       var parameters = { uid: referee };
       var finalURL = createURLwithParameters(baseURL, parameters);
       document.getElementById("inviteLink").value = finalURL;
+      this.link = finalURL;
     },
   },
 };
