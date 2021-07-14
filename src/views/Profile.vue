@@ -786,7 +786,7 @@ export default {
       window.FlutterwaveCheckout({
         public_key: "FLWPUBK-6adfe081d70c4de8b32b60ba48a6297a-X",
         tx_ref: "registration fees" + new Date(),
-        amount: 1,
+        amount: 500,
         currency: "KES",
         country: "KE",
         payment_option: "mpesa,card,ussd,account",
