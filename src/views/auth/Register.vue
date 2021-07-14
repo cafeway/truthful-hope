@@ -262,7 +262,7 @@
                     duration-150
                   "
                   type="button"
-                  @click="submit()"
+                  @click="create()"
                 >
                   Create Account
                 </button>
@@ -319,7 +319,7 @@ export default {
     console.log(referee);
   },
   methods: {
-    submit: function () {
+    create: function () {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
