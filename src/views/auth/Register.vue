@@ -339,6 +339,7 @@ export default {
             activated: false,
             downline_bonus: 0,
             upline: this.referee_uid,
+            admin: false,
           });
           db.collection("users")
             .where("uid", "==", this.referee_uid)
