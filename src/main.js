@@ -47,7 +47,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics(); 
+firebase.analytics();
 // import Index from "@/views/Index.vue";
 
 // routes

@@ -35,6 +35,8 @@
                 Username
               </label>
               <input
+                required="required"
+                v-model="form.username"
                 id="username"
                 type="text"
                 class="
@@ -66,6 +68,8 @@
                 Email address
               </label>
               <input
+                required="required"
+                v-model="form.email"
                 id="email"
                 type="email"
                 class="
@@ -97,6 +101,8 @@
                 PhoneNumber
               </label>
               <input
+                required="required"
+                v-model="form.phone"
                 id="phonenumber"
                 type="text"
                 class="
@@ -202,9 +208,38 @@
                   duration-150
                 "
                 id="inviteLink"
+                readonly
               />
             </div>
           </div>
+          <hr />
+          <button
+            class="
+              bg-blueGray-800
+              text-white
+              active:bg-blueGray-600
+              text-sm
+              font-bold
+              uppercase
+              px-6
+              py-3
+              rounded
+              shadow
+              hover:shadow-lg
+              outline-none
+              focus:outline-none
+              mr-1
+              mb-1
+              w-full
+              ease-linear
+              transition-all
+              duration-150
+            "
+            type="button"
+            @click="create()"
+          >
+            Update Profile
+          </button>
           <!--<div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label
@@ -358,11 +393,17 @@ export default {
       cashout: 0,
       downline_bonus: 0,
       link: "",
+      form: {
+        phone: "",
+        email: "",
+        username: "",
+      },
     };
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
       var user_mail = user.email;
+      this.uid = user.uid;
       const db = firebase.firestore();
       db.collection("users")
         .doc(user_mail)
@@ -375,13 +416,12 @@ export default {
           this.downlines = data.downlines;
           this.plan = data.plan;
           this.downline_bonus = data.downline_bonus;
-          this.uid = data.uid;
           document.getElementById("username").value = data.username;
           document.getElementById("email").value = data.email;
           document.getElementById("phonenumber").value = data.phonenumber;
           document.getElementById("wallet").value = data.uid;
-          this.getlink();
         });
+      this.getlink();
     });
   },
   methods: {
@@ -394,6 +434,27 @@ export default {
       var finalURL = createURLwithParameters(baseURL, parameters);
       document.getElementById("inviteLink").value = finalURL;
       this.link = finalURL;
+    },
+    create: function () {
+      let db = firebase.firestore();
+      db.collection("users").doc(firebase.auth().currentUser.email).set({
+        username: this.form.username,
+        email: this.form.email,
+        phonenumber: this.form.phone,
+        uid: firebase.auth().currentUser.uid,
+        plan: "Nyati",
+        balance: 0,
+        downlines: 0,
+        cashouts: 0,
+        activated: false,
+        downline_bonus: 0,
+        admin: false,
+        role: "admin",
+      });
+      this.$swal({
+        icon: "success",
+        text: "account updated successfully activate to use",
+      });
     },
   },
 };
