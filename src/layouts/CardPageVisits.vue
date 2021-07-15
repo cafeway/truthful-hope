@@ -153,6 +153,45 @@
             >
               {{ p.verified }}
             </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              <button
+                class="
+                  bg-blueGray-800
+                  text-white
+                  active:bg-blueGray-600
+                  text-sm
+                  font-bold
+                  uppercase
+                  px-6
+                  py-3
+                  rounded
+                  shadow
+                  hover:shadow-lg
+                  outline-none
+                  focus:outline-none
+                  mr-1
+                  mb-1
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                type="button"
+                @click="verify(p.id)"
+              >
+                verify
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -203,6 +242,45 @@ export default {
           });
         });
     });
+  },
+  methods: {
+    verify: function (id) {
+      console.log(id);
+      let db = firebase.firestore();
+      db.collection("panda")
+        .where("id", "==", id)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            db.collection("panda").doc(doc.id).update({
+              verified: true,
+            });
+            db.collection("panda")
+              .doc(doc.id)
+              .delete()
+              .then(() => {
+                console.log("deleted");
+              });
+          });
+        });
+      db.collection("panda")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            db.collection("panda")
+              .doc(doc.id)
+              .get()
+              .then((snapshot) => {
+                let data = snapshot.data();
+                let id = data.id;
+                let new_id = id - 1;
+                db.collection("panda").doc(doc.id).update({
+                  id: new_id,
+                });
+              });
+          });
+        });
+    },
   },
 };
 </script>
