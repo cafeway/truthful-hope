@@ -3,7 +3,7 @@
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">Fox Queue</h3>
+          <h3 class="font-semibold text-base text-blueGray-700">30% ROI</h3>
         </div>
         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
           <button

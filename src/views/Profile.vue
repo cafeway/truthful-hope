@@ -788,7 +788,7 @@ export default {
         tx_ref: "registration fees" + new Date(),
         amount: 500,
         currency: "KES",
-        country: "KE",
+        country: "KE  ",
         payment_option: "mpesa,card,ussd,account",
         customer: {
           email: this.email,

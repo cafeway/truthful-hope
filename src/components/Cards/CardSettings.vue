@@ -131,7 +131,68 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                ID
+                Activation Status
+              </label>
+              <input
+                required="required"
+                v-model="form.activated"
+                id="activated"
+                type="text"
+                class="
+                  border-0
+                  px-3
+                  py-3
+                  placeholder-blueGray-300
+                  text-blueGray-600
+                  bg-white
+                  rounded
+                  text-sm
+                  shadow
+                  focus:outline-none
+                  focus:ring
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+              />
+            </div>
+            <hr />
+            <button
+              class="
+                bg-blueGray-800
+                text-white
+                active:bg-blueGray-600
+                text-sm
+                font-bold
+                uppercase
+                px-6
+                py-3
+                rounded
+                shadow
+                hover:shadow-lg
+                outline-none
+                focus:outline-none
+                mr-1
+                mb-1
+                w-full
+                ease-linear
+                transition-all
+                duration-150
+              "
+              type="button"
+              @click="activate()"
+            >
+              Activate Account
+            </button>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                REFFERAl ID
               </label>
               <input
                 id="wallet"
@@ -415,16 +476,19 @@ export default {
           this.activated = data.activated;
           this.downlines = data.downlines;
           this.plan = data.plan;
+          this.activated = data.activated;
           this.downline_bonus = data.downline_bonus;
           document.getElementById("username").value = data.username;
           document.getElementById("email").value = data.email;
           document.getElementById("phonenumber").value = data.phonenumber;
           document.getElementById("wallet").value = data.uid;
+          document.getElementById("activated").value = data.activated;
         });
       this.getlink();
     });
   },
   methods: {
+    activate: function () {},
     getlink: function () {
       var urlgenerator = require("urlgenerator");
       var createURLwithParameters = urlgenerator.createURLwithParameters;

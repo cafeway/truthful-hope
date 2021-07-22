@@ -28,6 +28,7 @@ import Tables from "@/views/admin/Tables.vue";
 import Maps from "@/views/admin/Maps.vue";
 import checkout from "@/views/admin/checkout.vue";
 import admin from "@/views/admin/admin.vue";
+import invest from "@/views/admin/invest.vue";
 // views for Auth layout
 
 import Login from "@/views/auth/Login.vue";
@@ -73,6 +74,10 @@ const routes = [
       {
         path: "/admin/maps",
         component: Maps,
+      },
+      {
+        path: "admin/invest",
+        component: invest,
       },
       {
         path: "/admin/checkout",

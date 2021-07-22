@@ -308,7 +308,7 @@
             </router-link>
           </li>
           <li class="items-center">
-            <router-link to="/profile" v-slot="{ href, navigate, isActive }">
+            <router-link to="admin/invest" v-slot="{ href, navigate, isActive }">
               <a
                 :href="href"
                 @click="navigate"
@@ -323,7 +323,7 @@
                   class="fas fa-box-open mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                RECHARGE HERE
+                INVESTMENT PANEL
               </a>
             </router-link>
           </li>
