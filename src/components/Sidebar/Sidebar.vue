@@ -304,7 +304,7 @@
                   class="fas fa-shopping-cart mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                DEPOSIT
+                DEPOSIT PANEL
               </a>
             </router-link>
           </li>

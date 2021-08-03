@@ -125,7 +125,7 @@
                 text-left
               "
             >
-              {{ p.id }}
+              {{ p.amount }}
             </th>
             <td
               class="
@@ -138,20 +138,25 @@
                 p-4
               "
             >
-              {{ p.amount }}
-            </td>
-            <td
-              class="
-                border-t-0
-                px-6
-                align-middle
-                border-l-0 border-r-0
-                text-xs
-                whitespace-nowrap
-                p-4
-              "
-            >
               {{ p.state }}
+            </td>
+            <td>
+              <vue-countdown-timer
+                @start_callback="startCallBack('event started')"
+                @end_callback="endCallBack('ended')"
+                :start-time="p.starttime"
+                :end-time="p.stoptime"
+                :interval="1000"
+                :start-label="'Time to maturity:'"
+                :end-label="''"
+                label-position="begin"
+                :end-text="'investment matured'"
+                :day-txt="'d'"
+                :hour-txt="'h'"
+                :minutes-txt="'m'"
+                :seconds-txt="'s'"
+              >
+              </vue-countdown-timer>
             </td>
           </tr>
         </tbody>
@@ -178,6 +183,10 @@ export default {
       bunny: [],
     };
   },
+  methods: {
+    endCallBack: function () {},
+    stopCallBack: function () {},
+  },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
       var user_mail = user.email;
@@ -195,8 +204,9 @@ export default {
           this.email = data.email;
           this.downline_bonus = data.downline_bonus;
         });
-      db.collection("fox")
-        .where("mail", "==", user_mail)
+      db.collection("users")
+        .doc(user_mail)
+        .collection("investments")
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {

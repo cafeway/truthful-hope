@@ -156,7 +156,7 @@ export default {
   },
   methods: {
     ROI1: function () {
-      if (this.form.amount < 300 && this.form.amount > 5000 && this.form.amount > this.balance) {
+      if (this.form.amount <= this.balance && this.form.amount < 5000) {
         let amount = this.form.amount;
         let db = firebase.firestore();
         db.collection("users")
@@ -177,16 +177,17 @@ export default {
             id: Math.floor(Math.random() * 10000 + 1),
             amount: amount,
             starttime: firebase.firestore.Timestamp.now().seconds,
-            stoptime: firebase.firestore.Timestamp.now() + 345600,
+            stoptime: firebase.firestore.Timestamp.now().seconds + 345600,
             state: "running",
             profit: amount + amount * 0.5,
           });
+        alert("investment was successful");
       } else {
-        alert("kindly enter btwn 300-5000 or top up");
+        alert("choose an amount less than  5000ksh for this package or top up");
       }
     },
     ROI2: function () {
-      if (this.form.amount < 500 && this.form.amount > 10000 && this.form.amount > this.balance) {
+      if (this.form.amount <= this.balance && this.form.amount < 10000) {
         let amount = this.form.amount;
         let db = firebase.firestore();
         db.collection("users")
@@ -207,12 +208,13 @@ export default {
             id: Math.floor(Math.random() * 10000 + 1),
             amount: amount,
             starttime: firebase.firestore.Timestamp.now().seconds,
-            stoptime: firebase.firestore.Timestamp.now() + 518400,
+            stoptime: firebase.firestore.Timestamp.now().seconds + 518400,
             state: "running",
             profit: amount + amount * 0.75,
           });
+        alert("Your investment was successful");
       } else {
-        alert("kindly enter btwn 3500-10000 or top up");
+        alert("kindly enter an amount less than 0000 or top up");
       }
     },
   },

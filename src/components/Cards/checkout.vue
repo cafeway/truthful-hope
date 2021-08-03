@@ -87,7 +87,7 @@
                   duration-150
                 "
                 type="button"
-                @click="invest()"
+                @click="withdraw()"
               >
                 Withdraw
               </button>
@@ -114,6 +114,22 @@ export default {
         rate: 0,
       },
     };
+  },
+  methods: {
+    withdraw: function () {
+      let db = firebase.firestore();
+      let balance = this.balance;
+      let amount = this.form.amount;
+      if (this.form.amount <= this.balance) {
+        let nb = balance - amount;
+        db.collection("users").doc(firebase.auth().currentUser.email).update({
+          balance: nb,
+        });
+        alert("you have cashed out" + this.form.amount);
+      } else {
+        alert("insuficient funds");
+      }
+    },
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
