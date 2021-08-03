@@ -470,7 +470,7 @@ export default {
         .doc(user_mail)
         .get()
         .then((snapshot) => {
-          var data = snapshot.data();
+          let data = snapshot.data();
           this.username = data.username;
           this.balance = data.balance;
           this.activated = data.activated;
@@ -478,11 +478,15 @@ export default {
           this.plan = data.plan;
           this.activated = data.activated;
           this.downline_bonus = data.downline_bonus;
+          console.log("....");
           document.getElementById("username").value = data.username;
           document.getElementById("email").value = data.email;
           document.getElementById("phonenumber").value = data.phonenumber;
           document.getElementById("wallet").value = data.uid;
           document.getElementById("activated").value = data.activated;
+        })
+        .catch((err) => {
+          alert(err.message);
         });
       this.getlink();
     });

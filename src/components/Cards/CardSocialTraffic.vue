@@ -3,7 +3,7 @@
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">30% ROI</h3>
+          <h3 class="font-semibold text-base text-blueGray-700">Your investments</h3>
         </div>
         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
           <button
@@ -27,7 +27,7 @@
             "
             type="button"
           >
-            3
+            pro
           </button>
         </div>
       </div>
@@ -53,7 +53,7 @@
                 text-left
               "
             >
-              Wait Id
+              Amount
             </th>
             <th
               class="
@@ -71,7 +71,43 @@
                 text-left
               "
             >
-              Amount
+              Status
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Timer
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Cashed
             </th>
           </tr>
         </thead>
@@ -103,6 +139,19 @@
               "
             >
               {{ p.amount }}
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.state }}
             </td>
           </tr>
         </tbody>
@@ -147,7 +196,7 @@ export default {
           this.downline_bonus = data.downline_bonus;
         });
       db.collection("fox")
-        .where("email", "==", user_mail)
+        .where("mail", "==", user_mail)
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {

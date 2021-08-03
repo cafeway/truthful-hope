@@ -16,7 +16,7 @@
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
     >
-      Choose A Rate
+      Choose A Package
     </a>
     <div
       ref="popoverDropdownRef"
@@ -40,7 +40,7 @@
           text-blueGray-400
         "
       >
-        Admin Layout
+        70% ROI
       </span>
       <router-link
         to="/admin/dashboard"

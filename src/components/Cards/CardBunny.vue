@@ -73,6 +73,42 @@
             >
               Amount
             </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              STATUS
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Timer
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -104,6 +140,37 @@
             >
               {{ p.amount }}
             </td>
+            <td
+              class="
+                px-6
+                border-t-0
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.state }}
+            </td>
+            <td>
+              <vue-countdown-timer
+                @start_callback="startCallBack('event started')"
+                @end_callback="endCallBack('event ended')"
+                :start-time="'2018-10-10 00:00:00'"
+                :end-time="1481450115"
+                :interval="1000"
+                :start-label="'Until start:'"
+                :end-label="'Until end:'"
+                label-position="begin"
+                :end-text="'Event ended!'"
+                :day-txt="'days'"
+                :hour-txt="'hours'"
+                :minutes-txt="'minutes'"
+                :seconds-txt="'seconds'"
+              >
+              </vue-countdown-timer>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -112,7 +179,6 @@
 </template>
 <script>
 import firebase from "firebase";
-
 export default {
   data() {
     return {
@@ -128,6 +194,14 @@ export default {
       email: "",
       bunny: [],
     };
+  },
+  methods: {
+    startcallBack: function (x) {
+      console.log(x);
+    },
+    endcallBack: function (x) {
+      console.log(x);
+    },
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
@@ -147,7 +221,7 @@ export default {
           this.downline_bonus = data.downline_bonus;
         });
       db.collection("bunny")
-        .where("email", "==", user_mail)
+        .where("mail", "==", user_mail)
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {

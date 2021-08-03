@@ -15,7 +15,7 @@
   >
     <div class="rounded-t bg-white mb-0 px-6 py-6">
       <div class="text-center flex justify-between">
-        <h6 class="text-blueGray-700 text-xl font-bold">TruthFull Hope Investments</h6>
+        <h6 class="text-blueGray-700 text-xl font-bold">Deposit</h6>
       </div>
     </div>
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -23,10 +23,9 @@
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
           <b>BALANCE:</b> {{ this.balance }}
         </h6>
-        <hr class="mt-6 border-b-1 border-blueGray-300" />
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-1">
+            <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
@@ -35,9 +34,8 @@
               </label>
               <input
                 id="amount"
-                min="0"
                 v-model="form.amount"
-                type="number"
+                type="text"
                 class="
                   border-0
                   px-3
@@ -59,11 +57,11 @@
             </div>
           </div>
         </div>
+
         <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-          truthfull hope is the Way to higher financial attitude.
-        </h6>
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Invest</h6>
+
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
@@ -90,13 +88,14 @@
                   duration-150
                 "
                 type="button"
-                @click="ROI1()"
+                @click="invest()"
               >
-                50% ROI for 4DAYS
+                Withdraw
               </button>
             </div>
           </div>
         </div>
+
         <div class="flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
@@ -123,9 +122,9 @@
                   duration-150
                 "
                 type="button"
-                @click="ROI2()"
+                @click="invest()"
               >
-                75% ROI for 6DAYS
+                Withdraw
               </button>
             </div>
           </div>
@@ -145,81 +144,11 @@ export default {
       plan4: 0,
       plan: "",
       balance: 0,
-      email: null,
-      username: null,
-      phonenumber: null,
       form: {
-        amount: null,
-        rate: null,
+        amount: 0,
+        rate: 0,
       },
     };
-  },
-  methods: {
-    ROI1: function () {
-      if (this.form.amount < 300 && this.form.amount > 5000 && this.form.amount > this.balance) {
-        let amount = this.form.amount;
-        let db = firebase.firestore();
-        db.collection("users")
-          .doc(this.email)
-          .get()
-          .then((snapshot) => {
-            let data = snapshot.data();
-            let balance = data.balance;
-            let nb = balance - amount;
-            db.collection("users").doc(this.email).update({
-              balance: nb,
-            });
-          });
-        db.collection("users")
-          .doc(this.email)
-          .collection("investments")
-          .add({
-            id: Math.floor(Math.random() * 10000 + 1),
-            amount: amount,
-            starttime: firebase.firestore.Timestamp.now().seconds,
-            stoptime: firebase.firestore.Timestamp.now() + 345600,
-            state: "running",
-            profit: amount + amount * 0.5,
-          });
-      } else {
-        alert("kindly enter btwn 300-5000 or top up");
-      }
-    },
-    ROI2: function () {
-      if (this.form.amount < 500 && this.form.amount > 10000 && this.form.amount > this.balance) {
-        let amount = this.form.amount;
-        let db = firebase.firestore();
-        db.collection("users")
-          .doc(this.email)
-          .get()
-          .then((snapshot) => {
-            let data = snapshot.data();
-            let balance = data.balance;
-            let nb = balance - amount;
-            db.collection("users").doc(this.email).update({
-              balance: nb,
-            });
-          });
-        db.collection("users")
-          .doc(this.email)
-          .collection("investments")
-          .add({
-            id: Math.floor(Math.random() * 10000 + 1),
-            amount: amount,
-            starttime: firebase.firestore.Timestamp.now().seconds,
-            stoptime: firebase.firestore.Timestamp.now() + 518400,
-            state: "running",
-            profit: amount + amount * 0.75,
-          });
-      } else {
-        alert("kindly enter btwn 3500-10000 or top up");
-      }
-    },
-  },
-  created() {
-    const script = document.createElement("script");
-    script.src = "https://checkout.flutterwave.com/v3.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
@@ -235,8 +164,8 @@ export default {
           this.activated = data.activated;
           this.downlines = data.downlines;
           this.plan = data.plan;
-          this.phonenumber = data.phonenumber;
-          this.email = data.email;
+          this.downline_bonus = data.downline_bonus;
+          this.uid = data.uid;
         });
     });
     console.log(this.plans);

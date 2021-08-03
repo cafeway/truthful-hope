@@ -4,13 +4,13 @@ import firebase from "firebase";
 //sweet alert
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
-
+import VueCountdownTimer from "vuejs-countdown-timer";
 import { createWebHistory, createRouter } from "vue-router";
 // styles
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
-
+import vueAwesomeCountdown from "vue-awesome-countdown";
 // mouting point for the whole app
 
 import App from "@/App.vue";
@@ -29,6 +29,7 @@ import Maps from "@/views/admin/Maps.vue";
 import checkout from "@/views/admin/checkout.vue";
 import admin from "@/views/admin/admin.vue";
 import invest from "@/views/admin/invest.vue";
+import deposit from "@/views/admin/deposit.vue";
 // views for Auth layout
 
 import Login from "@/views/auth/Login.vue";
@@ -74,6 +75,10 @@ const routes = [
       {
         path: "/admin/maps",
         component: Maps,
+      },
+      {
+        path: "/admin/deposit",
+        component: deposit,
       },
       {
         path: "admin/invest",
@@ -124,4 +129,10 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).use(VueSweetalert2).mount("#app");
+createApp(App)
+  .use(router)
+  .use(VueSweetalert2)
+  .use(VueCountdownTimer)
+  .use(vueAwesomeCountdown)
+  .use(VueCountdownTimer)
+  .mount("#app");

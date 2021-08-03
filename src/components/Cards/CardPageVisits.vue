@@ -73,6 +73,42 @@
             >
               Amount
             </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Status
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Timer
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -91,6 +127,32 @@
             >
               {{ p.id }}
             </th>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.amount }}
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.state }}
+            </td>
             <td
               class="
                 border-t-0
@@ -147,7 +209,7 @@ export default {
           this.downline_bonus = data.downline_bonus;
         });
       db.collection("panda")
-        .where("email", "==", user_mail)
+        .where("mail", "==", user_mail)
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {
