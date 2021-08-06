@@ -260,7 +260,7 @@ export default {
   },
   methods: {
     kenya: function () {
-      alert("lipa na mpesa: till no: 9022833");
+      window.location.href = "https://mpesa-modal.herokuapp.com";
     },
     // tanzania: function () {
     //   alert("send money to mpesa: 0743126150 then contact admin");

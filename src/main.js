@@ -10,7 +10,6 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
-import vueAwesomeCountdown from "vue-awesome-countdown";
 // mouting point for the whole app
 
 import App from "@/App.vue";
@@ -129,10 +128,4 @@ const router = createRouter({
   routes,
 });
 
-createApp(App)
-  .use(router)
-  .use(VueSweetalert2)
-  .use(VueCountdownTimer)
-  .use(vueAwesomeCountdown)
-  .use(VueCountdownTimer)
-  .mount("#app");
+createApp(App).use(router).use(VueSweetalert2).use(VueCountdownTimer).mount("#app");
