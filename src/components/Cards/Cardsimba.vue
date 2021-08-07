@@ -110,7 +110,7 @@
                 text-left
               "
             >
-              Mature it
+              Send To Users Balance
             </th>
           </tr>
         </thead>
@@ -182,7 +182,7 @@
                 type="button"
                 @click="mature(p.profit, p.id, p.email)"
               >
-                mature it
+                Send
               </button>
             </td>
           </tr>

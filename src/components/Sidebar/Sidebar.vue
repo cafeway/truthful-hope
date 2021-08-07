@@ -220,7 +220,7 @@
                   class="fas fa-tv mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Dashboard
+                Main Dashboard
               </a>
             </router-link>
           </li>
@@ -241,7 +241,7 @@
                   class="fa fa-cog mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Profile
+                YOUR Profile
               </a>
             </router-link>
           </li>
@@ -262,7 +262,7 @@
                   class="fas fa-table mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                YOUR DOWNLINES
+                VIEW DOWNLINES
               </a>
             </router-link>
           </li>
@@ -283,7 +283,7 @@
                   class="fas fa-shopping-cart mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                CASHOUT PANEL
+                WITHDRAW
               </a>
             </router-link>
           </li>
@@ -304,7 +304,7 @@
                   class="fas fa-shopping-cart mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                DEPOSIT PANEL
+                DEPOSIT
               </a>
             </router-link>
           </li>
@@ -324,7 +324,7 @@
                   class="fas fa-box-open mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                INVESTMENT PANEL
+                INVEST
               </a>
             </router-link>
           </li>

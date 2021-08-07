@@ -231,6 +231,10 @@ export default {
             db.collection("cashouts").doc(doc.id).delete();
           });
         });
+      this.$swal({
+        icon: "success",
+        title: "cashout confirmed successfully",
+      });
     },
   },
 };
