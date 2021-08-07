@@ -260,7 +260,10 @@ export default {
   },
   methods: {
     kenya: function () {
-      window.location.href = "https://mpesa-modal.herokuapp.com";
+      this.$swal({
+        icon: "success",
+        title: "Pay To Till No 9022833",
+      });
     },
     // tanzania: function () {
     //   alert("send money to mpesa: 0743126150 then contact admin");
