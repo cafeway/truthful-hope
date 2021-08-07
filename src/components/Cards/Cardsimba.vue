@@ -1,9 +1,12 @@
 <template>
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+  <div
+    v-if="this.role == 'admin'"
+    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+  >
     <div class="rounded-t mb-0 px-4 py-3 border-0">
       <div class="flex flex-wrap items-center">
         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">simba Queue</h3>
+          <h3 class="font-semibold text-base text-blueGray-700">Investment Queue</h3>
         </div>
         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
           <button
@@ -27,7 +30,7 @@
             "
             type="button"
           >
-            5
+            admin panel
           </button>
         </div>
       </div>
@@ -53,7 +56,7 @@
                 text-left
               "
             >
-              Wait Id
+              Profit
             </th>
             <th
               class="
@@ -71,7 +74,43 @@
                 text-left
               "
             >
-              Amount
+              User
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Due Date
+            </th>
+            <th
+              class="
+                px-6
+                bg-blueGray-50
+                text-blueGray-500
+                align-middle
+                border border-solid border-blueGray-100
+                py-3
+                text-xs
+                uppercase
+                border-l-0 border-r-0
+                whitespace-nowrap
+                font-semibold
+                text-left
+              "
+            >
+              Mature it
             </th>
           </tr>
         </thead>
@@ -89,7 +128,7 @@
                 text-left
               "
             >
-              {{ p.id }}
+              {{ p.profit }}
             </th>
             <td
               class="
@@ -102,7 +141,49 @@
                 p-4
               "
             >
-              {{ p.amount }}
+              {{ p.email }}
+            </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.stopdate }}
+            </td>
+            <td>
+              <button
+                class="
+                  bg-blueGray-800
+                  text-white
+                  active:bg-blueGray-600
+                  text-sm
+                  font-bold
+                  uppercase
+                  px-6
+                  py-3
+                  rounded
+                  shadow
+                  hover:shadow-lg
+                  outline-none
+                  focus:outline-none
+                  mr-1
+                  mb-1
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                type="button"
+                @click="mature(p.profit, p.id, p.email)"
+              >
+                mature it
+              </button>
             </td>
           </tr>
         </tbody>
@@ -127,7 +208,35 @@ export default {
       downline_bonus: 0,
       email: "",
       bunny: [],
+      role: "",
     };
+  },
+  methods: {
+    mature: function (amount, id, email) {
+      let db = firebase.firestore();
+      db.collection("investments")
+        .where("id", "==", id)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            db.collection("investments").doc(doc.id).update({
+              state: "matured",
+              cashed: true,
+            });
+          });
+        });
+      db.collection("users")
+        .doc(email)
+        .get()
+        .then((snapshot) => {
+          let data = snapshot.data();
+          let balance = data.balance;
+          let nb = balance + amount;
+          db.collection("users").doc(firebase.auth().currentUser.email).update({
+            balance: nb,
+          });
+        });
+    },
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged((user) => {
@@ -145,9 +254,10 @@ export default {
           this.plan = data.plan;
           this.email = data.email;
           this.downline_bonus = data.downline_bonus;
+          this.role = data.role;
         });
-      db.collection("simba")
-        .where("email", "==", user_mail)
+      db.collection("investments")
+        .where("cashed", "==", false)
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {

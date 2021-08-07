@@ -90,7 +90,40 @@
                   duration-150
                 "
                 type="button"
-                @click="ROI1()"
+                @click="invest()"
+              >
+                25% ROI for 2DAYS
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <button
+                class="
+                  bg-blueGray-800
+                  text-white
+                  active:bg-blueGray-600
+                  text-sm
+                  font-bold
+                  uppercase
+                  px-6
+                  py-3
+                  rounded
+                  shadow
+                  hover:shadow-lg
+                  outline-none
+                  focus:outline-none
+                  mr-1
+                  mb-1
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                type="button"
+                @click="invest1()"
               >
                 50% ROI for 4DAYS
               </button>
@@ -123,7 +156,7 @@
                   duration-150
                 "
                 type="button"
-                @click="ROI2()"
+                @click="invest2()"
               >
                 75% ROI for 6DAYS
               </button>
@@ -155,66 +188,131 @@ export default {
     };
   },
   methods: {
-    ROI1: function () {
-      if (this.form.amount <= this.balance && this.form.amount < 5000) {
-        let amount = this.form.amount;
-        let db = firebase.firestore();
-        db.collection("users")
-          .doc(this.email)
-          .get()
-          .then((snapshot) => {
-            let data = snapshot.data();
-            let balance = data.balance;
-            let nb = balance - amount;
-            db.collection("users").doc(this.email).update({
-              balance: nb,
+    invest: function () {
+      if (this.form.amount > 0 && this.form.amount <= this.balance) {
+        if (this.form.amount <= 5000 && this.form.amount >= 300) {
+          let amount = parseFloat(this.form.amount);
+          let db = firebase.firestore();
+          db.collection("users")
+            .doc(this.email)
+            .get()
+            .then((snapshot) => {
+              let data = snapshot.data();
+              let balance = data.balance;
+              let nb = balance - amount;
+              db.collection("users").doc(this.email).update({
+                balance: nb,
+              });
             });
+          db.collection("investments").add({
+            id: Math.floor(Math.random() * 10000 + 1),
+            amount: amount,
+            starttime: firebase.firestore.Timestamp.now().seconds,
+            stopdate: firebase.firestore.Timestamp.now().seconds + 172800,
+            stoptime: firebase.firestore.Timestamp.now().seconds + 172800,
+            state: "running",
+            profit: amount + amount * 0.25,
+            cashed: false,
+            email: firebase.auth().currentUser.email,
           });
-        db.collection("users")
-          .doc(this.email)
-          .collection("investments")
-          .add({
+          this.$swal({
+            title: "your investment was successful",
+          });
+        } else {
+          this.$swal({
+            icon: "alert",
+            title: "enter an amount between 300 - 5000 for this package",
+          });
+        }
+      } else {
+        this.$swal({
+          icon: "alert",
+          title: "you have insufficient funds ",
+        });
+      }
+    },
+    invest1: function () {
+      if (this.form.amount > 0 && this.form.amount <= this.balance) {
+        if (this.form.amount <= 5000 && this.form.amount >= 500) {
+          let amount = parseFloat(this.form.amount);
+          let db = firebase.firestore();
+          db.collection("users")
+            .doc(this.email)
+            .get()
+            .then((snapshot) => {
+              let data = snapshot.data();
+              let balance = data.balance;
+              let nb = balance - amount;
+              db.collection("users").doc(this.email).update({
+                balance: nb,
+              });
+            });
+          db.collection("investments").add({
             id: Math.floor(Math.random() * 10000 + 1),
             amount: amount,
             starttime: firebase.firestore.Timestamp.now().seconds,
             stoptime: firebase.firestore.Timestamp.now().seconds + 345600,
             state: "running",
             profit: amount + amount * 0.5,
+            cashed: false,
+            email: firebase.auth().currentUser.email,
           });
-        alert("investment was successful");
+          this.$swal({
+            title: "your investment was successful",
+          });
+        } else {
+          this.$swal({
+            icon: "alert",
+            title: "enter an amount between 300 - 5000 for this package",
+          });
+        }
       } else {
-        alert("choose an amount less than  5000ksh for this package or top up");
+        this.$swal({
+          icon: "alert",
+          title: "you have insufficient funds ",
+        });
       }
     },
-    ROI2: function () {
-      if (this.form.amount <= this.balance && this.form.amount < 10000) {
-        let amount = this.form.amount;
-        let db = firebase.firestore();
-        db.collection("users")
-          .doc(this.email)
-          .get()
-          .then((snapshot) => {
-            let data = snapshot.data();
-            let balance = data.balance;
-            let nb = balance - amount;
-            db.collection("users").doc(this.email).update({
-              balance: nb,
+    invest2: function () {
+      if (this.form.amount > 0 && this.form.amount <= this.balance) {
+        if (this.form.amount <= 10000 && this.form.amount >= 5000) {
+          let amount = parseFloat(this.form.amount);
+          let db = firebase.firestore();
+          db.collection("users")
+            .doc(this.email)
+            .get()
+            .then((snapshot) => {
+              let data = snapshot.data();
+              let balance = data.balance;
+              let nb = balance - amount;
+              db.collection("users").doc(this.email).update({
+                balance: nb,
+              });
             });
-          });
-        db.collection("users")
-          .doc(this.email)
-          .collection("investments")
-          .add({
+          db.collection("investments").add({
             id: Math.floor(Math.random() * 10000 + 1),
             amount: amount,
             starttime: firebase.firestore.Timestamp.now().seconds,
             stoptime: firebase.firestore.Timestamp.now().seconds + 518400,
             state: "running",
             profit: amount + amount * 0.75,
+            cashed: false,
+            email: firebase.auth().currentUser.email,
           });
-        alert("Your investment was successful");
+          this.$swal({
+            title: "your investment was successful",
+          });
+        } else {
+          this.$swal({
+            icon: "alert",
+            title: "enter an amount between 5000 - 10000 for this package",
+          });
+        }
       } else {
-        alert("kindly enter an amount less than 0000 or top up");
+        this.$swal({
+          icon: "alert",
+          title: "you have insufficient funds ",
+        });
       }
     },
   },

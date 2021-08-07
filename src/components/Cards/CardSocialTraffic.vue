@@ -89,7 +89,7 @@
                 text-left
               "
             >
-              Timer
+              Due Date
             </th>
             <th
               class="
@@ -107,7 +107,7 @@
                 text-left
               "
             >
-              Cashed
+              Cashout State
             </th>
           </tr>
         </thead>
@@ -140,23 +140,21 @@
             >
               {{ p.state }}
             </td>
+            <td
+              class="
+                border-t-0
+                px-6
+                align-middle
+                border-l-0 border-r-0
+                text-xs
+                whitespace-nowrap
+                p-4
+              "
+            >
+              {{ p.stoptime }}
+            </td>
             <td>
-              <vue-countdown-timer
-                @start_callback="startCallBack('event started')"
-                @end_callback="endCallBack('event ended')"
-                :start-time="'2018-10-10 00:00:00'"
-                :end-time="1481450115"
-                :interval="1000"
-                :start-label="'Until start:'"
-                :end-label="'Until end:'"
-                label-position="begin"
-                :end-text="'Event ended!'"
-                :day-txt="'days'"
-                :hour-txt="'hours'"
-                :minutes-txt="'minutes'"
-                :seconds-txt="'seconds'"
-              >
-              </vue-countdown-timer>
+              {{ p.cashed }}
             </td>
           </tr>
         </tbody>
@@ -181,6 +179,7 @@ export default {
       downline_bonus: 0,
       email: "",
       bunny: [],
+      status: "",
     };
   },
   methods: {
@@ -191,22 +190,8 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       var user_mail = user.email;
       const db = firebase.firestore();
-      db.collection("users")
-        .doc(user_mail)
-        .get()
-        .then((snapshot) => {
-          var data = snapshot.data();
-          this.username = data.username;
-          this.balance = data.balance;
-          this.activated = data.activated;
-          this.downlines = data.downlines;
-          this.plan = data.plan;
-          this.email = data.email;
-          this.downline_bonus = data.downline_bonus;
-        });
-      db.collection("users")
-        .doc(user_mail)
-        .collection("investments")
+      db.collection("investments")
+        .where("email", "==", user_mail)
         .get()
         .then((snapshot) => {
           snapshot.forEach((doc) => {

@@ -37,20 +37,18 @@ import Register from "@/views/auth/Register.vue";
 // views without layouts
 
 import Profile from "@/views/Profile.vue";
+// import Index from "@/views/Index.vue";
 var firebaseConfig = {
-  apiKey: "AIzaSyAocmbv2RKshs59wC6KjX_WeXx0NqcrIx4",
-  authDomain: "promax-cash-b01d7.firebaseapp.com",
-  projectId: "promax-cash-b01d7",
-  storageBucket: "promax-cash-b01d7.appspot.com",
-  messagingSenderId: "485471035688",
-  appId: "1:485471035688:web:a0099d5d5c939e5683f01d",
-  measurementId: "G-GB6NFFL8XQ",
+  apiKey: "AIzaSyBV9CYlrp2RZqTSpSt0nPHHRYTI8mq8YGY",
+  authDomain: "wise-fex.firebaseapp.com",
+  projectId: "wise-fex",
+  storageBucket: "wise-fex.appspot.com",
+  messagingSenderId: "1027087323521",
+  appId: "1:1027087323521:web:2b1a4a769248bd0b649880",
+  measurementId: "G-E1E70NVLPY",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-// import Index from "@/views/Index.vue";
-
 // routes
 
 const routes = [

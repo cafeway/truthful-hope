@@ -177,7 +177,7 @@
                     duration-150
                   "
                   required="required"
-                  placeholder="e.g  0743******"
+                  placeholder="Start with +254 "
                   v-model="form.phonenumber"
                 />
               </div>

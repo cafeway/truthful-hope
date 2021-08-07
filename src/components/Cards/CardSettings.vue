@@ -158,33 +158,6 @@
               />
             </div>
             <hr />
-            <button
-              class="
-                bg-blueGray-800
-                text-white
-                active:bg-blueGray-600
-                text-sm
-                font-bold
-                uppercase
-                px-6
-                py-3
-                rounded
-                shadow
-                hover:shadow-lg
-                outline-none
-                focus:outline-none
-                mr-1
-                mb-1
-                w-full
-                ease-linear
-                transition-all
-                duration-150
-              "
-              type="button"
-              @click="activate()"
-            >
-              Activate Account
-            </button>
           </div>
           <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
@@ -496,7 +469,7 @@ export default {
     getlink: function () {
       var urlgenerator = require("urlgenerator");
       var createURLwithParameters = urlgenerator.createURLwithParameters;
-      var baseURL = "https://promaxcash.com/auth/register";
+      var baseURL = "https://truthfulhope.com/auth/register";
       var referee = firebase.auth().currentUser.uid;
       var parameters = { uid: referee };
       var finalURL = createURLwithParameters(baseURL, parameters);
